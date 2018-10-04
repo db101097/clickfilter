@@ -1,0 +1,20 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Filter App V1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    upload your image
+    <br>
+
+    <input type="file" name="pic" accept="image/*" onchange="showPicture(event)">
+    
+
+    <img id="myimage" height="800">
+
+      <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>
