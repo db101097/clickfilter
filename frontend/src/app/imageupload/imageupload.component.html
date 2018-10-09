@@ -1,0 +1,9 @@
+<form action="">
+  <img [src]="url" height="500" id="img"><br>
+  <input type="file" accept="image/*" (change)="onSelectFile($event)">
+  <input type="radio" (click)="onSubmit($event)" name="filterStyle" value="option1"> Option 1
+  <input type="radio" (click)="onSubmit($event)" name="filterStyle" value="option2"> Option 2
+  <input type="radio" (click)="onSubmit($event)" name="filterStyle" value="option3"> Option 3
+
+
+</form>

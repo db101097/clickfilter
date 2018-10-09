@@ -1,3 +1,5 @@
+
+// convert to angular
 function showPicture(event){
     var file = event.target.files[0]
     var reader = new FileReader()
