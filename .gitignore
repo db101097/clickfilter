@@ -1,0 +1,14 @@
+# compiled output
+/dist
+
+# python ignorables
+*.pyc
+__pycache__
+
+# images
+*.png
+*.jpeg
+
+# misc
+.DS_Store
+/frontend
