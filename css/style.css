@@ -59,9 +59,10 @@ html{
   top: 0;
 }
 .page{
-    margin-left:200px;
+    margin-left:500px;
     color:whitesmoke;
     margin-top:-200px;
+    width:1200px;
     
 }
 .text-file-upload::first-letter,
@@ -92,12 +93,12 @@ html{
 p{
     padding:20px;
     font-family: fantasy;
-    margin-right:10px;
+    margin-right:5px;
     background: white;
     color:black;
     border-radius: 20px;
     width: 80%;
-    height: 40%;
+    height: 90%;
      border:1px solid; 
     border-image: linear-gradient(to right, #b861c6 0%,#ffc7c7 100%);
     border-image-slice: 1;
