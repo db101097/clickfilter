@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/instagram.css">
     <link rel="stylesheet" href="css/Grid.css">
     <link rel="stylesheet" href="css/style.css">
@@ -17,22 +18,27 @@
         <div class="row">
 
                   <h1 id="main-title">ClickFilter</h1>
-                      
-
+                     
             
           </div>
         </nav> 
  
         
             
-    
-     </header>
-         <div class="row">
+ </header>
+         <div class="row page">
             <div class="col span-1-of-2 box">
-             <h2> Upload Image</h2>
+             <h2 class="upload-img text-file-upload"> Upload Image</h2>
+                <p> &nbsp;Please upload an image of your choice from your computer , and then choose the filters you want to apply below!</p>
+                <form action="/action_page.php">
+       <input type="file" name="pic" accept="image/*">
+       <input type="submit">
+</form>
             </div>
+            
             <div class="col span-1-of-2 box">
-             <h2> See Image</h2>
+             <h2 class="see-img  text-file-image"> See Image</h2>
+                <p> </p>
             </div>
         </div>
  </body>    

@@ -15,22 +15,39 @@ html{
 
 
 
+
 #main-title{
-    text-align: left;
-   list-style-type: none;
    margin-left:30px;
-  font-family: 'Josefin Sans', sans-serif;
-   color:white;
-   
-   padding:10px;
-         
+   font-family:"Abril Fatface", sans-serif;
+  background: linear-gradient(to right, crimson,pink,blue);
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip:text;
+  color:white;
+  transition: color .2s ease-in-out;
+  text-transform:uppercase;
+  font-weight:900;
+    padding:10px;
+
 }
-#main-title:first-letter{
+#main-title::first-letter{
     color:mediumpurple;
-    font-size:1.1em;
-    font-weight:bold;
-    
+    font-size: 200%;
 }
+
+#main-title:hover{
+  color:rgba(0,0,0,0);
+}
+@keyframes rainbow { 
+  0%{background-position:left}
+  50%{background-position:right}
+  100%{background-position:left}
+}
+      
+
+
+
 
 #main-title:after{
   background: linear-gradient(to right, #bcbcbc 25%,#ffcd02 25%, #ffcd02 50%, #e84f47 50%, #e84f47 75%, #65c1ac 75%);
@@ -41,7 +58,52 @@ html{
   left: 0;
   top: 0;
 }
+.page{
+    margin-left:200px;
+    color:whitesmoke;
+    margin-top:-200px;
+    
+}
+.text-file-upload::first-letter,
+.text-file-image::first-letter{
+    color:rgba(255, 255, 0, 0.74);
+}
+.text-file-upload,
+.text-file-image{
+  font-family: 'Josefin Sans', sans-serif;
+  background: linear-gradient(to right, crimson,purple,pink);
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip:text;
+  color:white;
+  transition: color .2s ease-in-out;
+  text-transform:uppercase;
+  font-weight:900;
+    padding:10px;
+    margin-bottom:100px;
 
+}
+.text-file-upload:hover,
+.text-file-image:hover{
+  color:rgba(0,0,0,0);
+}
+
+p{
+    padding:20px;
+    font-family: fantasy;
+    margin-right:10px;
+    background: white;
+    color:black;
+    border-radius: 20px;
+    width: 80%;
+    height: 40%;
+     border:1px solid; 
+    border-image: linear-gradient(to right, #b861c6 0%,#ffc7c7 100%);
+    border-image-slice: 1;
+    border-width: 20px;
+
+}
 h1{
     max-width: 1240px;
 }
