@@ -1,0 +1,51 @@
+html{
+     background-image:linear-gradient(rgba(0, 0, 0, 0.48),rgba(0, 0, 0, 0.22)),url(img/wallpaper.wiki-Pretty-Photo-HD-Tumblr-PIC-WPE004196.jpg);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+#main-title{
+    text-align: left;
+   list-style-type: none;
+   margin-left:30px;
+  font-family: 'Josefin Sans', sans-serif;
+   color:white;
+   
+   padding:10px;
+         
+}
+#main-title:first-letter{
+    color:mediumpurple;
+    font-size:1.1em;
+    font-weight:bold;
+    
+}
+
+#main-title:after{
+  background: linear-gradient(to right, #bcbcbc 25%,#ffcd02 25%, #ffcd02 50%, #e84f47 50%, #e84f47 75%, #65c1ac 75%);
+  position: absolute;
+  content: '';
+  height: 4px;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+h1{
+    max-width: 1240px;
+}
+h2{
+    margin-left: 40px;
+    margin-top:200px;
+}
