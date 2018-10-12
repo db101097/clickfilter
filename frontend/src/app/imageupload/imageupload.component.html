@@ -1,5 +1,5 @@
 <form action="">
-  <img [src]="url" height="500" id="img"><br>
+  <img [src]="url" height="500" id="img" (mousedown)="mDown()" (mouseup)="mUp()"><br>
   <input type="file" accept="image/*" (change)="onSelectFile($event)">
   <input type="radio" (click)="onSubmit($event)" name="filterStyle" value="contour"> Contour
   <input type="radio" (click)="onSubmit($event)" name="filterStyle" value="emboss"> Emboss

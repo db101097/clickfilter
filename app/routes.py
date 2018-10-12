@@ -33,6 +33,8 @@ def hey():
     # EDGE_ENHANCE_MORE
     # EMBOSS
     img_io = BytesIO()
+
+    # possibly expand on these so that they aren't so boring?
     if value == 'contour':
         img.filter(ImageFilter.CONTOUR).save(img_io, 'PNG', quality=70)
     elif value == 'emboss':
