@@ -12,6 +12,7 @@ __pycache__/
 
 # misc
 venv/
+/venv
 .DS_Store
 /frontend
 frontend
