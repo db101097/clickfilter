@@ -1,15 +1,17 @@
 # compiled output
-/dist
+dist/
+*.egg-info
 
 # python ignorables
 *.pyc
-__pycache__
+__pycache__/
 
 # images
 *.png
 *.jpeg
 
 # misc
+venv/
 .DS_Store
 /frontend
 frontend
