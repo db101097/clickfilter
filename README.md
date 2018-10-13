@@ -29,6 +29,6 @@ python3 -m flask
 python -m flask run
 ````
 5.Now open up your web browser and enter the following URL in the address field:
-http://localhost:5000/ "
+http://localhost:5000/ 
 
 6.UI should be self explanatory where user will upload a picture and apply the available filters to see in real-time
