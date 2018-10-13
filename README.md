@@ -9,7 +9,8 @@ Version 1 Requirements
 
 How To Run:
 
-1.Download ,Extract Zip File, Use Terminal To Go Into The Directory Of The File 
+1.Download ,Extract Zip File, Use Terminal To Go Into The Directory Of The File
+<br>
 <br>
 2.Run Terminal Command
  ```
