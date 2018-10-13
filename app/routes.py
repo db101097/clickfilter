@@ -7,6 +7,7 @@ from app import app
 from PIL import Image, ImageFilter
 from io import BytesIO
 
+# to be used if we need to save files to server.
 UPLOAD_FOLDER = 'app/static/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
@@ -23,18 +24,21 @@ def home():
 
 @app.route('/filterimg', methods=['GET', 'POST'])
 def filterimg():
-    # value will be the filter style applied to the image
+    # Endpoint for image processing/filtering.
     # todo: add more styles!
+
+    # value = requested filterstyle from frontend.
+    # img   = img data from frontend.
     value = request.form['value']
-    print(value)
-    # remove the padding from the img file
+    # print(value)
+    # removes the padding from the img data.
+    # decodes the base64 img into a readable bytestream and reads it.
     img = re.sub('^data:image/.+;base64,', '', request.form['img'])
     img = Image.open(BytesIO(base64.b64decode(img)))
-    # EDGE_ENHANCE_MORE
-    # EMBOSS
     img_io = BytesIO()
 
     # possibly expand on these so that they aren't so boring?
+    # opened image has filter applied to it and is saved to the img_io stream.
     if value == 'contour':
         img.filter(ImageFilter.CONTOUR).save(img_io, 'PNG', quality=70)
     elif value == 'emboss':
@@ -42,10 +46,10 @@ def filterimg():
     elif value == 'edge':
         img.filter(ImageFilter.EDGE_ENHANCE_MORE).save(img_io, 'PNG', quality=70)
 
+    # set img_io HEAD to first position.
     img_io.seek(0)
-    # post_img = base64.b64encode(img.tobytes()).decode()
-    # print(post_img)
 
+    # CORS headed uneeded now, but don't remove yet.
     response = make_response(send_file(img_io, mimetype='image/png'))
     response.headers.add(
         'Access-Control-Allow-Origin',

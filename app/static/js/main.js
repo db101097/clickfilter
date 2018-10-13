@@ -1,9 +1,15 @@
-
-// convert to angular
-
+/* TODO
+    Turn global vars into Objects.
+    More error checking.
+*/
 formData = new FormData();
 
+var temp1 = ""; // used in mDown(), mUp()
+var temp2 = ""; 
 
+// Takes .imagefile from user imput as event.
+// Read image as URL -> update img on page.
+// Save imageURL to formData, temp.
 function showPicture(event){
     var file = event.target.files[0]
     var reader = new FileReader()
@@ -17,6 +23,8 @@ function showPicture(event){
     reader.readAsDataURL(file)
 }
 
+// Takes user selection from radio buttons as event.
+// passed event is the selected filter.
 function onSubmit(event) {
     var img = document.getElementById("myimage")
     if(img.src == "") {
@@ -24,13 +32,15 @@ function onSubmit(event) {
     }
     else {
       var value = event.target.value;
-      console.log("value:", value)
-      //http://localhost:5000/hey
-
+      //console.log("value:", value)
       formData.set('value', value);
 
+      // backend API route for processing images.
+      // http://localhost:5000/filterimg 
+      // POST formData to backend, formData contains user's image, selected value.
+      // receive blob and show user their filtered image.
       $.ajax({
-          url : 'http://localhost:5000/hey',
+          url : 'http://localhost:5000/filterimg',
           type: 'POST',
           data: formData,
           processData: false,
@@ -41,22 +51,21 @@ function onSubmit(event) {
           success:function(data){
               let reader = new FileReader();
               reader.readAsDataURL(data)
-              console.log("eeee")
+              // console.log("POST SUCCESS.")
               reader.onload = function(e){
                   img.src = e.target.result
             };
           },
           error:function(){
-              console.log("eeeeeeEEE")
+              // function param should be the error response generated
+              // by the backend.
+              // console.log("Error.")
           }
       })
     }
 }
 
-
-var temp1 = "";
-var temp2 = "";
-
+// On mouse click DOWN show user their original image
 function mDown() {
     var img = document.getElementById("myimage")
     temp2 = img.src
@@ -65,6 +74,7 @@ function mDown() {
 
 }
 
+// On mouse click UP show user their filtered image
 function mUp() {
     var img = document.getElementById("myimage")
     img.src = temp2
