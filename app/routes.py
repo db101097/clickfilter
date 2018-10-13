@@ -41,7 +41,7 @@ def hey():
         img.filter(ImageFilter.EMBOSS).save(img_io, 'PNG', quality=70)
     elif value == 'edge':
         img.filter(ImageFilter.EDGE_ENHANCE_MORE).save(img_io, 'PNG', quality=70)
-        
+
     img_io.seek(0)
     # post_img = base64.b64encode(img.tobytes()).decode()
     # print(post_img)
