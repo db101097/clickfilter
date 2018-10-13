@@ -1,0 +1,129 @@
+html{
+     background-image:linear-gradient(rgba(0, 0, 0, 0.48),rgba(0, 0, 0, 0.22)),url(img/wallpaper.wiki-Pretty-Photo-HD-Tumblr-PIC-WPE004196.jpg);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+
+#main-title{
+   margin-left:30px;
+   font-family:cursive;
+  background: repeating-linear-gradient(to right, crimson,pink,blue);
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  animation-iteration-count: infinite;
+  background-clip: text;
+  -webkit-background-clip:text;
+  color:white;
+  transition: color .2s ease-in-out;
+  text-transform:uppercase;
+  font-weight:900;
+    padding:10px;
+  font-size:200%;
+
+}
+#main-title::first-letter{
+    color:mediumpurple;
+    font-size: 200%;
+}
+
+#main-title:hover{
+  color:rgba(0,0,0,0);
+}
+
+.form-filter,
+.upload-pic{
+    margin-left:30px;
+}
+@keyframes rainbow { 
+  0%{background-position:left}
+  50%{background-position:right}
+  100%{background-position:left}
+}
+      
+
+
+
+
+#main-title:after{
+  background: linear-gradient(to right, #bcbcbc 25%,#ffcd02 25%, #ffcd02 50%, #e84f47 50%, #e84f47 75%, #65c1ac 75%);
+  position: absolute;
+  content: '';
+  height: 4px;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+.page{
+    margin-left:500px;
+    color:whitesmoke;
+    margin-top:-200px;
+    max-width: 1300px;
+    height:800px;
+    
+}
+.text-file-upload::first-letter,
+.text-file-image::first-letter{
+    color:rgba(255, 255, 0, 0.74);
+}
+.text-file-upload,
+.text-file-image{
+  font-family: 'Josefin Sans', sans-serif;
+  background: linear-gradient(to right, crimson,purple,pink);
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip:text;
+  color:white;
+  transition: color .2s ease-in-out;
+  text-transform:uppercase;
+  font-weight:900;
+    padding:10px;
+    margin-bottom:100px;
+
+
+}
+.text-file-upload:hover,
+.text-file-image:hover{
+  color:rgba(0,0,0,0);
+}
+
+p{
+    padding:20px;
+    font-family: fantasy;
+    margin-right:10px;
+    background: white;
+    color:black;
+    border-radius: 20px;
+    width: 80%;
+    height: 40%;
+     border:1px solid; 
+    border-image: linear-gradient(to right, #b861c6 0%,#ffc7c7 100%);
+    border-image-slice: 1;
+    border-width: 20px;
+    margin-top:-30px;
+
+}
+h1{
+    max-width: 1240px;
+}
+h2{
+    margin-left: 40px;
+    margin-top:200px;
+}
+#myimage{
+    border:3px solid; 
+    border-image: linear-gradient(to right, #b861c6 0%,#ffc7c7 100%);
+    border-image-slice: 1;
+}
