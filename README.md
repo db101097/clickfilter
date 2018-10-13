@@ -1,4 +1,4 @@
-# filter-app-v1
+# filter-app-v1 <img src="readmelogo.png" width="100%" height="100%" />
 A simple web-app for image filtering.
 
 ## Version 1 Requirements
