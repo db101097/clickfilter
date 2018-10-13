@@ -1,36 +1,39 @@
 # filter-app-v1
+A simple web-app for image filtering.
 
-Version 1 Requirements
-=====
+## Version 1 Requirements
 * Allow a user to choose a picture to filter (uploaded images).
 * Allow a user to select from 3 potential image filters (of your choosing).
 * Display the filtered image to the user.
 
+## How To Run:
+1. Clone or download this repo into a directory of your choosing.
+2. In a Command Line Interface of your choosing create a virtual environment
 
-How To Run:
+   ```
+   python3 -m venv venv
+   ```
+3. Activate the virtual environment
 
-1.Download ,Extract Zip File, Use Terminal To Go Into The Directory Of The File
-<br>
-<br>
-2.Run Terminal Command
- ```
- python3 -m venv venv
- 
- ```
-3.Then Type In 
- ```
-source venv/bin/activate
- ```
-4.After setting up the environment , type in 
-```
-python3 -m flask
+   **UNIX machines**
+   ```
+   source venv/bin/activate
+   ```
+   **Windows**
+   ```
+   venv\Scripts\activate
+   ```
+4. Install required python modules
+   ```
+   pip install -r requirements.txt
+   ```
+5. Then type in 
+   ```
+   flask run
+   ```
+   Now open up your web browser and enter the following URL in the address field:
+   http://localhost:5000/
+6. Incase of Errors
 
-```
- Then type in 
-```
-python -m flask run
-````
-5.Now open up your web browser and enter the following URL in the address field:
-http://localhost:5000/ 
-
-6.UI should be self explanatory where user will upload a picture and apply the available filters to see in real-time
+   Go [here](http://flask.pocoo.org/docs/dev/cli/ "Command Line Interface") or
+   [there](http://flask.pocoo.org/docs/1.0/installation/ "Installation")
