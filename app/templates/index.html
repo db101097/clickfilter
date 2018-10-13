@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Filter App V1</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <input type="file" name="pic" accept="image/*" onchange="showPicture(event)">
-    
-    <form action="">
-        <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="contour"> Contour
-        <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="emboss"> Emboss
-        <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="edge"> Edge
-    </form>
-    
-
-    <img id="myimage" height="500" onmousedown="mDown()" onmouseup="mUp()">
-
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>
-</body>
-=======
 <!--Doctype HTML-->
 
 <html lang="en">
@@ -68,5 +43,4 @@
             <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
  </body>    
->>>>>>> filtertest
 </html>
