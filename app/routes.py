@@ -21,8 +21,8 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/hey', methods=['GET', 'POST'])
-def hey():
+@app.route('/filterimg', methods=['GET', 'POST'])
+def filterimg():
     # value will be the filter style applied to the image
     # todo: add more styles!
     value = request.form['value']
