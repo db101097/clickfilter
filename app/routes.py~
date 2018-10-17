@@ -85,12 +85,12 @@ def filterimg():
 	img_io.seek(0)
 
     # CORS headed uneeded now, but don't remove yet.
-	response = make_response(send_file(img_io, mimetype='image/png'))
-	response.headers.add(
+    response = make_response(send_file(img_io, mimetype='image/png'))
+    response.headers.add(
         'Access-Control-Allow-Origin',
         'http://localhost:4200')
-	response.headers.set(
+    response.headers.set(
         'Content-Type',
         'image/png'
-		)
-	return response
+        )
+    return response
