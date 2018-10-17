@@ -30,7 +30,7 @@
             <div class="col span-1-of-2 box">
              <h2 class="upload-img text-file-upload"> Upload Image</h2>
                
-                 <img id="myimage" height="300" width="300"onmousedown="mDown()" onmouseup="mUp()">
+                 <img id="myimage" height="400" width="500"onmousedown="mDown()" onmouseup="mUp()">
                 
                 <input type="file" name="pic" accept="image/*" onchange="showPicture(event)" class="upload-pic">
               <form class="form-filter" action="">
@@ -39,6 +39,9 @@
               <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="edge"> Edge
 			  <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="vintage"> Vintage
 		      <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="movie_moment"> Movie Moment
+              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="noir"> Noir
+              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="juicy"> Juicy
+              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="slumber"> Slumber
             </form>
               
         </div>

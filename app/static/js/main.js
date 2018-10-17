@@ -45,6 +45,7 @@ function onSubmit(event) {
           data: formData,
           processData: false,
           contentType: false,
+          cache: false,
           xhrFields: {
               responseType: 'blob'
           },
