@@ -81,6 +81,26 @@ def filterimg():
 		img_str = cv2.imencode('.PNG', new_image)[1].tostring()
 		img_io.write(img_str)
 
+	elif value=='face_blur':
+		im2= cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+		
+		gs_im2=cv2.cvtColor(im2,cv2.COLOR_BGR2GRAY)
+		haar_face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
+		faces = haar_face_cascade.detectMultiScale(gs_im2, scaleFactor=1.1, minNeighbors=5);  
+
+		for (x, y, w, h) in faces: 
+			roi=im2[y: y+h, x:x+w]
+
+		width,height,channel=roi.shape
+
+		roi=cv2.blur(roi,(width,height))
+		
+		for (x, y, w, h) in faces: 
+			im2[y: y+h, x:x+w]=roi
+
+		img_str = cv2.imencode('.PNG', im2)[1].tostring()
+		img_io.write(img_str)
+
     # set img_io HEAD to first position.
 	img_io.seek(0)
 
