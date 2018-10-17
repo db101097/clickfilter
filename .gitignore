@@ -5,6 +5,7 @@ dist/
 # python ignorables
 *.pyc
 __pycache__/
+*.cpython-36.pyc
 
 # images
 *.png
