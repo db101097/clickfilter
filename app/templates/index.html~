@@ -39,10 +39,14 @@
               <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="edge"> Edge
 			  <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="vintage"> Vintage
 		      <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="movie_moment"> Movie Moment
+<<<<<<< HEAD
               <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="noir"> Noir
               <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="juicy"> Juicy
+              <br>
               <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="slumber"> Slumber
+=======
 			  <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="face_blur"> Face Blur
+>>>>>>> db
             </form>
               
         </div>
