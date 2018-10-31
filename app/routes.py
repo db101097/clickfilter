@@ -28,7 +28,7 @@ def home():
 @app.route('/filterimg', methods=['GET', 'POST'])
 def filterimg():
 	# Endpoint for image processing/filtering.
-	# todo: add more styles!
+	# todo: encapsulate things so everything is simpler to test
 
 	# value = requested filterstyle from frontend.
 	# img   = img data from frontend.
