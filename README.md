@@ -1,7 +1,9 @@
 # filter-app-v1 <img src="readmelogo.png" width="8%" height="8%" />
 A simple web-app for image filtering.
 
-*filter-app-v2 coming soon, 12/14/2018*
+Preview our app on [Heroku!](http://clickfilters.herokuapp.com/ "http://clickfilters.herokuapp.com/")
+
+###### filter-app-v2 coming soon, 12/14/2018
 ### Stuff in use:
 * Frontend
   * HTML/CSS/JavaScript + jQuery/AJAX
