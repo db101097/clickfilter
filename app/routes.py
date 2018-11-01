@@ -43,6 +43,8 @@ def filterimg():
 	# possibly expand on these so that they aren't so boring?
 	# opened image has filter applied to it and is saved to the img_io stream.
 	if value == 'contour':
+		# f = Filterer()
+		# f.contour(img_io)
 		img.filter(ImageFilter.CONTOUR).save(img_io, 'PNG', quality=70)
 	elif value == 'emboss':
 		img.filter(ImageFilter.EMBOSS).save(img_io, 'PNG', quality=70)
@@ -146,3 +148,7 @@ def filterimg():
 		'image/png'
 		)
 	return response
+
+class Filterer:
+	def __init__(self):
+		self.value = "value"

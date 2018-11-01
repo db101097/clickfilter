@@ -19,4 +19,28 @@ class FilterApp:
     def test_img_string_is_decoded(self):
         self.setup()
 
-    # Test the image was properly encoded?
+    '''def test_image_opens(self):
+		mocker.patch('Image.open')
+		
+		i = ImageFilterer()
+		i.filter_image('rebecca_is_the_best.txt')
+		
+		Image.open.assert_called_once_with('rebecca_is_the_best.txt')
+
+    def test_image_opens(self):
+		mocker.patch('Image.open')
+		
+		i = ImageFilterer()
+		i.filter_image('rebecca_is_the_best.txt')
+		
+		Image.open.assert_called_once_with('rebecca_is_the_best.txt')
+
+    # Test the image was properly encoded?'''
+
+    def test_contour(self):
+        mocker.patch('Image.open')
+
+        f = Filterer()
+        f.apply_contour('hi.png')
+
+        Image.open.assert_called_once_with(BytesIO(base64.b64decode('hi.png'))
