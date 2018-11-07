@@ -113,9 +113,6 @@ def filterimg():
 
 	# CORS headed uneeded now, but don't remove yet.
 	response = make_response(send_file(img_io, mimetype='image/png'))
-	response.headers.add(
-		'Access-Control-Allow-Origin',
-		'http://localhost:4200')
 	response.headers.set(
 		'Content-Type',
 		'image/png'
