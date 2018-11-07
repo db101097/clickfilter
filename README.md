@@ -1,15 +1,20 @@
 # filter-app-v1 <img src="readmelogo.png" width="8%" height="8%" />
 A simple web-app for image filtering.
-### Stuff in use:
+
+Preview our app on [Heroku!](http://clickfilters.herokuapp.com/ "http://clickfilters.herokuapp.com/")
+
+###### filter-app-v2 coming soon, 12/14/2018
+### Tech in use:
 * Frontend
-  * HTML/CSS/JavaScript + jQuery/AJAX
+  * HTML/CSS/JavaScript + jQuery
 * Middleware
   * Eventually..
 * Backend
   * Flask (Python)
   * Pillow, OpenCV, Python libs for image processing
 * Hosted on
-  * Locally @ localhost:5000 for now, in some cloud eventually
+  * Locally @ localhost:5000
+  * http://clickfilters.herokuapp.com/
 ## Version 1 Requirements
 * Allow a user to choose a picture to filter (uploaded images).
 * Allow a user to select from 3 potential image filters (of your choosing).
