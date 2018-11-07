@@ -7,6 +7,7 @@ from flask import render_template, jsonify, request, send_file, make_response
 from app import app
 from PIL import Image, ImageFilter, ImageEnhance
 from io import BytesIO
+from .clickfilter import ClickFilter
 import cv2
 import numpy as np
 
@@ -40,16 +41,28 @@ def filterimg():
 	img = Image.open(BytesIO(base64.b64decode(img)))
 	img_io = BytesIO()
 
-	# possibly expand on these so that they aren't so boring?
+	# to do
+	test_me = ClickFilter(value, img_io, img)
+	'''
+	print(
+		"value:", test_me.getFilterValue(),
+		"\nimg_io:", test_me.getImageIO(),
+		"\nimage:", test_me.getImage()
+		)
+	'''
+	
 	# opened image has filter applied to it and is saved to the img_io stream.
 	if value == 'contour':
 		# f = Filterer()
 		# f.contour(img_io)
-		img.filter(ImageFilter.CONTOUR).save(img_io, 'PNG', quality=70)
+		# img.filter(ImageFilter.CONTOUR).save(img_io, 'PNG', quality=70)
+		test_me.processFilter()
 	elif value == 'emboss':
-		img.filter(ImageFilter.EMBOSS).save(img_io, 'PNG', quality=70)
+		# img.filter(ImageFilter.EMBOSS).save(img_io, 'PNG', quality=70)
+		test_me.processFilter()
 	elif value == 'edge':
-		img.filter(ImageFilter.EDGE_ENHANCE_MORE).save(img_io, 'PNG', quality=70)
+		# img.filter(ImageFilter.EDGE_ENHANCE_MORE).save(img_io, 'PNG', quality=70)
+		test_me.processFilter()
 	elif value =='vintage':
 		im2= cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
 		im2 = cv2.applyColorMap(im2, cv2.COLORMAP_WINTER)
@@ -120,7 +133,7 @@ def filterimg():
 		
 		gs_im2=cv2.cvtColor(im2,cv2.COLOR_BGR2GRAY)
 		haar_face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
-		faces = haar_face_cascade.detectMultiScale(gs_im2, scaleFactor=1.1, minNeighbors=5);  
+		faces = haar_face_cascade.detectMultiScale(gs_im2, scaleFactor=1.1, minNeighbors=5)
 
 		for (x, y, w, h) in faces: 
 			roi=im2[y: y+h, x:x+w]
@@ -148,7 +161,3 @@ def filterimg():
 		'image/png'
 		)
 	return response
-
-class Filterer:
-	def __init__(self):
-		self.value = "value"
