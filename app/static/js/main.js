@@ -40,7 +40,7 @@ function onSubmit(event) {
       // POST formData to backend, formData contains user's image, selected value.
       // receive blob and show user their filtered image.
       $.ajax({
-          url : 'http://localhost:5000/filterimg',
+          url : 'https://clickfilters.herokuapp.com/filterimg',
           type: 'POST',
           data: formData,
           processData: false,

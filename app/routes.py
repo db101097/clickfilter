@@ -115,7 +115,8 @@ def filterimg():
 	response = make_response(send_file(img_io, mimetype='image/png'))
 	response.headers.add(
 		'Access-Control-Allow-Origin',
-		'http://localhost:5000')
+		'https://clickfilters.herokuapp.com')
+		# http://localhost:5000
 	response.headers.set(
 		'Content-Type',
 		'image/png'
