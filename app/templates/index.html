@@ -30,10 +30,11 @@
             <div class="col span-1-of-2 box">
              <h2 class="upload-img text-file-upload"> Upload Image</h2>
                
-                 <img id="myimage" height="400" width="500"onmousedown="mDown()" onmouseup="mUp()">
+                 <img id="myimage" height="400" width="500" onmouseover="mHover()" onmouseout="mOut()">
                 
                 <input type="file" name="pic" accept="image/*" onchange="showPicture(event)" class="upload-pic">
               <form class="form-filter" action="">
+                  <!-- Template this so we look like smart programmers -->
               <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="contour"> Contour
               <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="emboss"> Emboss
               <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="edge"> Edge

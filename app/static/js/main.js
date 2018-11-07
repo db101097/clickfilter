@@ -67,17 +67,17 @@ function onSubmit(event) {
 }
 
 // On mouse click DOWN show user their original image
-function mDown() {
+function mHover() {
     var img = document.getElementById("myimage")
     temp2 = img.src
     img.src = temp1
-    console.log("mdown")
+    // console.log("hover")
 
 }
 
 // On mouse click UP show user their filtered image
-function mUp() {
+function mOut() {
     var img = document.getElementById("myimage")
     img.src = temp2
-    console.log("mup")
+    // console.log("hover OUT")
 }
