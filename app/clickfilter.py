@@ -11,7 +11,7 @@ class ClickFilter:
         self.filter_value = f
         self.img_io = io
         self.image = i
-        # s
+        
     def getFilterValue(self):
         return self.filter_value
 
