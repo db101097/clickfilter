@@ -7,7 +7,6 @@ import numpy as np
 from PIL import Image, ImageFilter, ImageEnhance
 
 
-
 class ClickFilter:
     def __init__(self, f, io, i):
         self.filter_value = f
@@ -42,7 +41,7 @@ class ClickFilter:
         self.image = PIL.ImageEnhance.Brightness(self.image).enhance(1.1)
         self.image.convert(mode='L').save(self.img_io, 'PNG', quality=70)
         self.image.save(self.img_io, 'PNG', quality=70)
-        
+
     def applyJuicy(self):
         self.image = PIL.ImageEnhance.Color(self.image).enhance(2.0)
         self.image = PIL.ImageEnhance.Contrast(self.image).enhance(1.2)
