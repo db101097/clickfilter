@@ -3,7 +3,9 @@
 
 # import modules used in routes
 import PIL
+import numpy as np
 from PIL import Image, ImageFilter, ImageEnhance
+
 
 
 class ClickFilter:
@@ -11,7 +13,7 @@ class ClickFilter:
         self.filter_value = f
         self.img_io = io
         self.image = i
-        # s
+
     def getFilterValue(self):
         return self.filter_value
 

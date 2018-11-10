@@ -127,3 +127,19 @@ h2{
     border-image: linear-gradient(to right, #b861c6 0%,#ffc7c7 100%);
     border-image-slice: 1;
 }
+
+#container {
+    width: 480px;
+    margin: auto;
+    padding: 2em;
+    position: absolute;
+}
+  
+#webcam {
+    visibility: hidden;
+    position: absolute;
+}
+  
+#canvas {
+    visibility: hidden;
+}
