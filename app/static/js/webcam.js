@@ -110,3 +110,22 @@ function render() {
 	}
   renderer.render( scene, camera );
 }
+
+function applyFilterOne() {
+    // code here
+}
+
+function applyFilterTwo() {
+    // code here
+}
+
+function applyFilterThree() {
+    // code here
+}
+
+function switchToSnapchat() {
+    // code here
+    // this code should SWAP OUT or HIDE the THREE.js webcam
+    // and SWAP IN the FEELIZ facetracking along with the
+    // extra face tracking stuff
+}

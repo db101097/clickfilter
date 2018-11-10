@@ -4,7 +4,7 @@
 */
 formData = new FormData();
 
-var temp1 = ""; // used in mDown(), mUp()
+var temp1 = ""; // temp strings to hold img URI
 var temp2 = ""; 
 
 // Takes .imagefile from user imput as event.
