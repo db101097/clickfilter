@@ -1,0 +1,151 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>ClickFilter App!</title>
+        <link async href="http://fonts.googleapis.com/css?family=Bad%20Script" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+      <link rel="stylesheet" href="css/style.css">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+        <nav class="navbar navbar-inverse "data-spy="affix" data-offset-top="197">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" id="main-title" href="#">ClickFilter</a>
+        </div>
+        <ul class="nav navbar-nav">
+           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i></a>
+              <ul class="dropdown-menu">
+              <li><a id="home-nav" href="#">Home</a></li>
+              <li><a id="webcam-nav" href="#">Webcam </a></li>
+              <li><a id="team-nav" href="#">Our Team</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+    <body>
+
+
+
+    <div class="container">
+      <div class="row js--wp-2">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+          <h2 class="upload-img text-file-upload"> Upload Image</h2>
+        </div>
+        <div class="col-sm-4">
+        </div>
+      </div>
+    </div>
+        
+    <!-------------------------Input Filters------------------------------------>
+        <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+          <h2>  
+              <img id="myimage" height="280" onmousedown="mDown()" onmouseup="mUp()">
+                <form>
+                    <div class="form-group js--wp-2">
+              <input type="file" size="100" name="uploadfile" id="img" accept="image/*" onchage="showPicture(event)" class="upload-pic">
+              <label for="exampleFormControlFile1" class="choose-filter js--wp-2">Choose filter</label>
+                        <div class="""slidecontainer">
+                       <input type="range" min="1" max="10" value="50" class="slider" id="myRange">
+                            </div>
+                        </div>
+               </form>
+            </h2>
+
+
+    </div>
+            </div>
+        </div> 
+        <!--
+        <div class="container white">
+      <div class="row">
+        <div class="col-sm-4">
+            <h2>Webcam</h2>
+        </div>
+    </div>
+        </div>
+    -->
+        <div class="container webcam-section js--wp-3">
+      <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4 ">
+          <h2 class="webcam-name">Smile Big!</h2>
+        </div>
+        <div class="col-sm-4">
+        </div>
+      </div>
+    </div>
+
+        <!-- Footer -->
+    <footer class="page-footer font-small cyan darken-3">
+
+        <!-- Footer Elements -->
+        <div class="container">
+
+          <!-- Grid row-->
+          <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-12 py-5">
+              <div class="mb-5 flex-center icons-footer">
+
+                <a class="fb-ic">
+                  <i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!-- Twitter -->
+                <a class="tw-ic">
+                  <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!-- Google +-->
+                <a class="gplus-ic">
+                  <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!--Linkedin -->
+                <a class="li-ic">
+                  <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!--Instagram-->
+                <a class="ins-ic">
+                  <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!--Pinterest-->
+                <a class="pin-ic">
+                  <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+                </a>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+          </div>
+          <!-- Grid row-->
+
+        </div>
+        <!-- Footer Elements -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 " >© 2018 Copyright:ClickFilterProductions
+        </div>
+        <!-- Copyright -->
+
+      </footer>
+      <!-- Footer -->
+        <script type="text/javascript" src="js/main.js"></script>
+          <script src="js/jquery.waypoints.min.js"></script>
+    </body>
+    </html>
+
