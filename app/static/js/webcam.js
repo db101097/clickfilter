@@ -115,20 +115,30 @@ function render() {
 $('#camFiltOne').click(function(){
   $('#je').css("visibility","hidden");
   console.log("filt1")
+  console.log(material.fragmentShader)
+  material = new THREE.ShaderMaterial( {
+    uniforms: uniforms,
+    vertexShader: document.getElementById('vertexshader').textContent,
+    fragmentShader: document.getElementById('fragmentshader').textContent
+  } );
+  material.extensions.derivatives = true;
+  scene.remove(mesh)
+  mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
 });
 
 // Filter Two Function
 $('#camFiltTwo').click(function(){
   $('#je').css("visibility","hidden");
   console.log("filt2")
-  console.log(material.vertexShader)
+  console.log(material.fragmentShader)
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
     vertexShader: document.getElementById('vertexshader').textContent,
     fragmentShader: document.getElementById('fragmentshader_two').textContent
   } );
   material.extensions.derivatives = true;
-  
+  scene.remove(mesh)
   mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
 });
