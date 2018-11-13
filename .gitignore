@@ -5,6 +5,8 @@ dist/
 # python ignorables
 *.pyc
 __pycache__/
+*.cpython-36.pyc
+*.cpython-37.pyc
 
 # images
 *.png
@@ -12,10 +14,7 @@ __pycache__/
 
 # misc
 venv/
+*.DS_Store
 .DS_Store
-.vscode/*
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode/
+.vscode

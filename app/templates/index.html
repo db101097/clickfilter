@@ -1,50 +1,225 @@
-<!--Doctype HTML-->
-
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/Grid.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/instagram.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/instagram.min.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-    <title> Filter Flask App!</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>ClickFilter App!</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link async href="http://fonts.googleapis.com/css?family=Bad%20Script" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://appstatic.jeeliz.com/faceFilter/jeelizFaceFilter.js"></script>
+      <script src="https://appstatic.jeeliz.com/faceFilter/Canvas2DDisplay.js"></script>
+      <script type="x-shader/x-vertex" id="vertexshader">
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position =   projectionMatrix * 
+                            modelViewMatrix * 
+                            vec4(position,4.0);
+        }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentshader">
+        uniform sampler2D u_texture;
+        uniform float time;
+        varying vec2 vUv; // position?
     
-</head>
+        float wave(float x, float amount) {
+        return (sin(x * amount) + 1.) * .5;
+        }
     
-    <body>
-     <header>
-        <nav>
-        <div class="row">
-
-                  <h1 id="main-title">ClickFilter</h1>
-                     
+        float tilt(vec2 p, float angle) {
+        vec2 direction = vec2(cos(45.00), sin(50.0));
+        return cos(dot(p, direction));
+        }
+        
+        void main() {
+        vec2 pos = (vUv - 0.1) * 1.4;
+        pos.x = pos.x + sin(pos.y*20.0+time*1.0)*0.03;
+        
+        vec4 color = texture2D(u_texture, pos);
+        
+        pos += tilt(pos, time / 1.0);
+        
+        float rand = sin(time);
             
-          </div>
-        </nav> 
-    </header>
-         <div class="row page">
-            <div class="col span-1-of-2 box">
-             <h2 class="upload-img text-file-upload"> Upload Image</h2>
-               
-                 <img id="myimage" height="400" width="500"onmousedown="mDown()" onmouseup="mUp()">
-                
-                <input type="file" name="pic" accept="image/*" onchange="showPicture(event)" class="upload-pic">
-              <form class="form-filter" action="">
-              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="contour"> Contour
-              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="emboss"> Emboss
-              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="edge"> Edge
-              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="noir"> Noir
-              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="juicy"> Juicy
-              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="slumber"> Slumber
-            </form>
-              
+        gl_FragColor.r = wave(color.r + rand, 30.0);
+        gl_FragColor.g = wave(color.g + rand, 5.0);
+        gl_FragColor.b = wave(color.b + rand, 5.0);
+        gl_FragColor.a = 1.0;
+        
+        }
+    </script>
+    <script src="{{url_for('static', filename='js/three.min.js')}}"></script>
+    </head>
+        <nav class="navbar navbar-inverse "data-spy="affix" data-offset-top="197">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" id="main-title" href="#">ClickFilter</a>
         </div>
-        </div>
-            <script src="{{url_for('static', filename='js/main.js')}}"></script>
+        <ul class="nav navbar-nav">
+           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i></a>
+              <ul class="dropdown-menu">
+              <li><a id="home-nav" href="#">Home</a></li>
+              <li><a id="webcam-nav" href="#">Webcam </a></li>
+              <li><a id="team-nav" href="#">Our Team</a></li>
+            </ul>
+          </li>
 
- </body>    
-</html>
+        </ul>
+      </div>
+    </nav>
+    <body>
+
+
+
+    <div class="container">
+      <div class="row js--wp-2">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+          <h2 class="upload-img text-file-upload"> Upload Image</h2>
+          <form>
+              <div class="form-group">
+                <input type="file" name="pic" id="upload-pic" accept="image/*" onchange="showPicture(event)" class="upload-pic">
+              </div>
+          </form>
+        </div>
+        <div class="col-sm-4">
+        </div>
+      </div>
+    </div>
+        
+    <!-------------------------Input Filters------------------------------------>
+        <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <img class="img-responsive center-block" id="myimage" src="{{ url_for('static', filename='favicon.ico') }}" 
+                  onmouseover="mHover()" onmouseout="mOut()">
+              </div>
+          </div>
+          <br>
+      <div class="row">
+        <div class="col">
+          <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                {% for filter in filters %}
+                {% if loop.index-1 == 0 %}
+                <li data-target="#myCarousel" data-value="{{filter}}" data-slide-to="{{loop.index-1}}"class="active"></li>
+                {% else %}
+                <li data-target="#myCarousel" data-value="{{filter}}" data-slide-to="{{loop.index-1}}"></li>
+                {% endif %}
+                {% endfor %}
+              </ol>
+            
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                {% for filter in filters %}
+                  {% if loop.index == 1 %}
+                    <div class="item active">
+                  {% else %}
+                    <div class="item">
+                  {% endif %}
+                    <img src="{{ url_for('static', filename='placeholder.png') }}" alt="{{filter}}" style="width:50%;">
+                    <div class="carousel-caption">
+                        <h3>{{filter}}</h3>
+                    </div>
+                </div>
+                {% endfor %}
+              </div>
+            
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+
+
+    </div>
+            </div>
+        </div> 
+
+    <br><br>
+    <div class="row"></div>
+        <div class="webcam-section js--wp-3">
+        <div class="col">
+          <h2 class="webcam-name">Smile Big!</h2>
+          <div id="container-fluid">
+            <video id="webcam" width="640" height="480"></video>
+            <canvas id="canvas" width="640" height="480"></canvas>
+            <canvas width="300" height="300" id="je"></canvas>
+          </div>
+        </div>
+    </div>
+  </div>
+
+        <!-- Footer -->
+    <footer class="page-footer font-small cyan darken-3">
+
+        <!-- Footer Elements -->
+        <div class="container">
+
+          <!-- Grid row-->
+          <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-12 py-5">
+              <div class="mb-5 flex-center icons-footer">
+
+                <a class="fb-ic">
+                  <i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!-- Twitter -->
+                <a class="tw-ic">
+                  <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!-- Google +-->
+                <a class="gplus-ic">
+                  <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!--Linkedin -->
+                <a class="li-ic">
+                  <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!--Instagram-->
+                <a class="ins-ic">
+                  <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+                <!--Pinterest-->
+                <a class="pin-ic">
+                  <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+                </a>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+          </div>
+          <!-- Grid row-->
+
+        </div>
+        <!-- Footer Elements -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 ">
+          © 2018 Copyright:ClickFilterProductions
+        </div>
+        <!-- Copyright -->
+
+      </footer>
+      <!-- Footer -->
+      <script src="{{url_for('static', filename='js/main.js')}}"></script>
+      <script src="{{url_for('static', filename='js/webcam.js')}}"></script>
+      <script src="{{url_for('static', filename='js/jquery.waypoints.min.js')}}"></script>
+    </body>
+    </html>
