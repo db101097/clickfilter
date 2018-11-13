@@ -110,7 +110,11 @@
               <!-- Indicators -->
               <ol class="carousel-indicators">
                 {% for filter in filters %}
-                <li data-target="#myCarousel" data-value="{{filter}}" data-slide-to="{{loop.index}}" class=></li>
+                {% if loop.index-1 == 0 %}
+                <li data-target="#myCarousel" data-value="{{filter}}" data-slide-to="{{loop.index-1}}"class="active"></li>
+                {% else %}
+                <li data-target="#myCarousel" data-value="{{filter}}" data-slide-to="{{loop.index-1}}"></li>
+                {% endif %}
                 {% endfor %}
               </ol>
             
@@ -125,7 +129,6 @@
                     <img src="{{ url_for('static', filename='placeholder.png') }}" alt="{{filter}}" style="width:50%;">
                     <div class="carousel-caption">
                         <h3>{{filter}}</h3>
-                        <p>{{filter}}</p>
                     </div>
                 </div>
                 {% endfor %}

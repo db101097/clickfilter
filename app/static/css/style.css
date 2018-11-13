@@ -331,23 +331,21 @@ footer{
 }
 
 .carousel-indicators li::before {
-    position: absolute;
+    position: relative;
     top: -10px;
     left: 0;
     display: inline-block;
     width: 100%;
     height: 10px;
-    content: "";
 }
 
 .carousel-indicators li::after {
-    position: absolute;
+    position: relative;
     bottom: -10px;
     left: 0;
     display: inline-block;
     width: 100%;
     height: 10px;
-    content: "";
 }
 
 .carousel-indicators .active {
