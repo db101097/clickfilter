@@ -5,6 +5,7 @@ dist/
 # python ignorables
 *.pyc
 __pycache__/
+app/__pycache__/*.cpython-37.pyc
 *.cpython-36.pyc
 *.cpython-37.pyc
 
@@ -18,3 +19,4 @@ venv/
 .DS_Store
 .vscode/
 .vscode
+.vscode/settings.json

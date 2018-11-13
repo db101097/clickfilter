@@ -283,6 +283,10 @@ footer{
     margin: auto;
 }
 
+.carousel-control {
+    width: 4%;
+}
+
 .carousel-control.left {
     left: 0;
     right: auto;
@@ -323,7 +327,7 @@ footer{
     -ms-flex: 0 1 auto;
     flex: 0 1 auto;
     width: 30px;
-    height: 3px;
+    height: 5px;
     margin-right: 3px;
     margin-left: 3px;
     text-indent: -999px;
@@ -331,7 +335,7 @@ footer{
 }
 
 .carousel-indicators li::before {
-    position: relative;
+    position: absolute;
     top: -10px;
     left: 0;
     display: inline-block;
@@ -340,12 +344,13 @@ footer{
 }
 
 .carousel-indicators li::after {
-    position: relative;
+    position: absolute;
     bottom: -10px;
     left: 0;
     display: inline-block;
     width: 100%;
     height: 10px;
+    content: "";
 }
 
 .carousel-indicators .active {
@@ -354,7 +359,7 @@ footer{
     -ms-flex: 0 1 auto;
     flex: 0 1 auto;
     width: 30px;
-    height: 3px;
+    height: 5px;
     margin-right: 3px;
     margin-left: 3px;
     text-indent: -999px;
