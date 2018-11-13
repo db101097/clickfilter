@@ -3,7 +3,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 window.URL = window.URL || window.webkitURL;
 
 let container, camera, scene, renderer, webcam;
-let texture, uniforms;
+let texture, uniforms, geometry, mesh, materials;
 let videoImage, videoImageContext, videoTexture;
 
 var CVD; //return of Canvas2DDisplay
@@ -68,19 +68,19 @@ function init() {
   camera = new THREE.PerspectiveCamera(75, 1.5, 1, 3e3)
   camera.position.set(0, 0, 5);
   
-  var geometry = new THREE.PlaneBufferGeometry(50, 50);
+  geometry = new THREE.PlaneBufferGeometry(50, 50);
   uniforms = {
     u_texture: { type: "t", value: videoTexture },
     time: { type: "f", value: performance.now() }
   };
-  var material = new THREE.ShaderMaterial( {
+  material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
     vertexShader: document.getElementById( 'vertexshader' ).textContent,
     fragmentShader: document.getElementById( 'fragmentshader' ).textContent
   } );
   material.extensions.derivatives = true;
   
-  var mesh = new THREE.Mesh(geometry, material);
+  mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
   
   renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: !0 });
@@ -101,7 +101,7 @@ function animate() {
 function render() {
 	if ( webcam.readyState === webcam.HAVE_ENOUGH_DATA ) 
 	{
-		videoImageContext.drawImage( webcam, 0, 0, 640, 480 );
+		videoImageContext.drawImage( webcam, 0, 0, videoImage.width, videoImage.height );
 		if (videoTexture) {
       videoTexture.needsUpdate = true;
       uniforms.time.value = performance.now() / 1e4
@@ -111,21 +111,50 @@ function render() {
   renderer.render( scene, camera );
 }
 
-function applyFilterOne() {
-    // code here
-}
+// Filter One Function
+$('#camFiltOne').click(function(){
+  $('#je').css("visibility","hidden");
+  console.log("filt1")
+});
 
-function applyFilterTwo() {
-    // code here
-}
+// Filter Two Function
+$('#camFiltTwo').click(function(){
+  $('#je').css("visibility","hidden");
+  console.log("filt2")
+  console.log(material)
+  material.fragmentShader = [
+    "varying vec2 vUv;",
+    "uniform sampler2D u_texture;",
+    "uniform float time;",
+    "vec3 rainbow2( in float t ){",
+      "vec3 d = vec3(0.0,0.33,0.67);",
+      "return 0.5 + 0.5*cos( 6.28318*(t+d) );",
+      "}",
+    "void main() {",
+      "vec2 pos = (vUv - 0.1) * 1.4;",
+      "vec3 origCol = texture2D(u_texture, pos);.rgb;",
+      "vec2 off = texture2D(u_texture, pos).rg - 0.5;",
+      "pos += off",
+      "vec3 rb = rainbow2((pos.x + pos.y + time * 2.0) * 0.5);",
+      "vec3 col = mix(origCol,rb,amount);",
+      "gl_FragColor = vec4(col, 1.0);",
+      "}"
+  ].join("\n")
+});
 
-function applyFilterThree() {
-    // code here
-}
+// Filter Three Function
+$('#camFiltThree').click(function(){
+  $('#je').css("visibility","hidden");
+  console.log("filt3")
+});
 
-function switchToSnapchat() {
+// Switch to Snapchat function
+$('#camFiltSnap').click(function(){
     // code here
     // this code should SWAP OUT or HIDE the THREE.js webcam
     // and SWAP IN the FEELIZ facetracking along with the
     // extra face tracking stuff
-}
+  $('#canvas').css("visibility","hidden");
+  $('#je').css("visibility","visible");
+  console.log("snapchat")
+});
