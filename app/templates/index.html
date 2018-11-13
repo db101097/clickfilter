@@ -55,6 +55,37 @@
         
         }
     </script>
+    <script type="x-shader/x-fragment" id="fragmentshader_two">
+      uniform sampler2D u_texture;
+      uniform float time;
+      varying vec2 vUv; // position?
+  
+      float wave(float x, float amount) {
+      return (sin(x * amount) + 1.) * .5;
+      }
+  
+      float tilt(vec2 p, float angle) {
+      vec2 direction = vec2(cos(45.00), sin(50.0));
+      return cos(dot(p, direction));
+      }
+      
+      void main() {
+      vec2 pos = (vUv - 0.1) * 1.4;
+      pos.x = pos.x + sin(pos.y*20.0+time*100.0)*0.03;
+      
+      vec4 color = texture2D(u_texture, pos);
+      
+      pos += tilt(pos, time / 1.0);
+      
+      float rand = sin(time);
+          
+      gl_FragColor.r = wave(color.r + rand, 30.0);
+      gl_FragColor.g = wave(color.g + rand, 5.0);
+      gl_FragColor.b = wave(color.b + rand, 5.0);
+      gl_FragColor.a = 1.0;
+      
+      }
+  </script>
     <script src="{{url_for('static', filename='js/three.min.js')}}"></script>
     </head>
         <nav class="navbar navbar-inverse "data-spy="affix" data-offset-top="197">

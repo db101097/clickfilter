@@ -121,25 +121,16 @@ $('#camFiltOne').click(function(){
 $('#camFiltTwo').click(function(){
   $('#je').css("visibility","hidden");
   console.log("filt2")
-  console.log(material)
-  material.fragmentShader = [
-    "varying vec2 vUv;",
-    "uniform sampler2D u_texture;",
-    "uniform float time;",
-    "vec3 rainbow2( in float t ){",
-      "vec3 d = vec3(0.0,0.33,0.67);",
-      "return 0.5 + 0.5*cos( 6.28318*(t+d) );",
-      "}",
-    "void main() {",
-      "vec2 pos = (vUv - 0.1) * 1.4;",
-      "vec3 origCol = texture2D(u_texture, pos);.rgb;",
-      "vec2 off = texture2D(u_texture, pos).rg - 0.5;",
-      "pos += off",
-      "vec3 rb = rainbow2((pos.x + pos.y + time * 2.0) * 0.5);",
-      "vec3 col = mix(origCol,rb,amount);",
-      "gl_FragColor = vec4(col, 1.0);",
-      "}"
-  ].join("\n")
+  console.log(material.vertexShader)
+  material = new THREE.ShaderMaterial( {
+    uniforms: uniforms,
+    vertexShader: document.getElementById('vertexshader').textContent,
+    fragmentShader: document.getElementById('fragmentshader_two').textContent
+  } );
+  material.extensions.derivatives = true;
+  
+  mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
 });
 
 // Filter Three Function
