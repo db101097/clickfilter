@@ -20,9 +20,9 @@ $('.js--wp-2').waypoint(function(direction){
 });
 
 formData = new FormData();
-
-var temp1 = ""; // temp strings to hold img URI
-var temp2 = ""; 
+var temp1 = document.getElementById("myimage").src; // temp strings to hold img URI
+var temp2 = document.getElementById("myimage").src; 
+var value = "";
 
 // Takes .imagefile from user imput as event.
 // Read image as URL -> update img on page.
@@ -35,21 +35,37 @@ function showPicture(event){
         img.title = file.name
         img.src = e.target.result
         temp1 = e.target.result
+        temp2 = e.target.result
         formData.set('img', img.src)
     };
     reader.readAsDataURL(file)
 }
 
+$('#myCarousel').on('slid.bs.carousel', function (e) {
+    var ele = $('#myCarousel .carousel-indicators li.active');
+    value = ele.data('value')
+    onSubmit();
+    console.log('target: ' + ele.data('target') + 
+                ' value: ' + ele.data('value') + 
+                ' slide-to: ' + ele.data('slideTo'));
+})
+
 // Takes user selection from radio buttons as event.
 // passed event is the selected filter.
-function onSubmit(event) {
+function onSubmit() {
     var img = document.getElementById("myimage")
-    if(img.src == "") {
-      alert("No image provided")
+    if(img.src == "" || formData.get('img') == null) {
+      console.warn("No image provided")
+      return;
+    }
+    if(value == "") {
+        console.warn("Invalid value provided")
+        return;
     }
     else {
-      var value = event.target.value;
+      //var value = event.target.value;
       //console.log("value:", value)
+      console.log("ee", value)
       formData.set('value', value);
 
       // backend API route for processing images.

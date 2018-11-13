@@ -129,15 +129,27 @@ h6 {
     max-height: 1200px;
 }
 label{
-    font-size:20px;
-    font-family: cursive;
-    margin-left:110px;
-    color:rgba(0, 255, 255, 0.76);
+    display: inline-flex;
+    max-width: 100%;
+    font-weight: 700;
 }
-.upload-pic{
-    font-size:16px;
-    margin-left:80px;
+
+input[type=file] {
+    margin: 0 auto;
+    color:white;
+    padding: 5px; 
+    border: 2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+    font-size: 100%;
+    cursor: pointer;
+    -moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+    -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+    opacity: 1;
 }
+
 /*************************************************** Slider button */
 .slidecontainer {
     width: 100%;
@@ -186,18 +198,9 @@ label{
 }
 /*************************************** Webcam section*/
 .webcam-section{
-    margin-top:50px;
+    margin: 0 auto;
     background: white;
-    padding:30px;
-    margin-left:30px;
-    height:550px;
-    margin-bottom:30px;
     border: 1px solid;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: 5px 5px 8px rgba(232, 13, 165, 0.99), 10px 10px 8px rgba(214, 115, 115, 0.78), 15px 15px 8px #ddb614;
     background-color:rgba(250, 235, 215, 0.83);
 }
 .webcam-name{
@@ -252,6 +255,14 @@ footer{
     padding: 2em;
     position: absolute;
 }
+
+#container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 100%;
+  }
   
 #webcam {
     visibility: hidden;
@@ -260,4 +271,116 @@ footer{
   
 #canvas {
     visibility: hidden;
+    position: absolute;
+}
+
+#je {
+    visibility: ;
+    position: absolute;
+}
+
+.carousel-inner img {
+    margin: auto;
+}
+
+.carousel-control.left {
+    left: 0;
+    right: auto;
+    background: transparent;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+    background-repeat: repeat-x;
+}
+
+.carousel-control.right {
+    right: 0;
+    left: auto;
+    background: transparent;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+    background-repeat: repeat-x;
+}
+
+.carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    left: 0;
+    z-index: 15;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    list-style: none;
+}
+
+.carousel-indicators li {
+    position: relative;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    background-color: rgba(255,255,255,.5);
+}
+
+.carousel-indicators li::before {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 10px;
+    content: "";
+}
+
+.carousel-indicators li::after {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 10px;
+    content: "";
+}
+
+.carousel-indicators .active {
+    position: relative;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    background-color: #fff;
+}
+
+ol.carousel-indicators {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+}
+
+  .carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,.6);
 }

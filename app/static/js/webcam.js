@@ -86,7 +86,7 @@ function init() {
   renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: !0 });
   renderer.setPixelRatio(2);
   
-  container = document.getElementById('container');
+  container = document.getElementById('container-fluid');
   container.appendChild( renderer.domElement );
   
 }
