@@ -120,8 +120,8 @@ function render() {
 // Filter One Function
 $('#camFiltOne').click(function(){
   $('#je').css("visibility","hidden");
-  console.log("filt1")
-  console.log(material.fragmentShader)
+  // console.log("filt1")
+  // console.log(material.fragmentShader)
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
     vertexShader: document.getElementById('vertexshader').textContent,
@@ -136,8 +136,8 @@ $('#camFiltOne').click(function(){
 // Filter Two Function
 $('#camFiltTwo').click(function(){
   $('#je').css("visibility","hidden");
-  console.log("filt2")
-  console.log(material.fragmentShader)
+  // console.log("filt2")
+  // console.log(material.fragmentShader)
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
     vertexShader: document.getElementById('vertexshader').textContent,
@@ -152,8 +152,8 @@ $('#camFiltTwo').click(function(){
 // Filter Three Function
 $('#camFiltThree').click(function(){
   $('#je').css("visibility","hidden");
-  console.log("filt3")
-  console.log(material.fragmentShader)
+  // console.log("filt3")
+  // console.log(material.fragmentShader)
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
     vertexShader: document.getElementById('vertexshader').textContent,
@@ -173,5 +173,5 @@ $('#camFiltSnap').click(function(){
     // extra face tracking stuff
   $('#canvas').css("visibility","hidden");
   $('#je').css("visibility","visible");
-  console.log("snapchat")
+  // console.log("snapchat")
 });

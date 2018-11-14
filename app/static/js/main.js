@@ -45,9 +45,11 @@ $('#myCarousel').on('slid.bs.carousel', function (e) {
     var ele = $('#myCarousel .carousel-indicators li.active');
     value = ele.data('value')
     onSubmit();
+    /*
     console.log('target: ' + ele.data('target') + 
                 ' value: ' + ele.data('value') + 
                 ' slide-to: ' + ele.data('slideTo'));
+                */
 })
 
 // Takes user selection from radio buttons as event.
@@ -65,7 +67,7 @@ function onSubmit() {
     else {
       //var value = event.target.value;
       //console.log("value:", value)
-      console.log(value)
+      //console.log(value)
       formData.set('value', value);
 
       // backend API route for processing images.
