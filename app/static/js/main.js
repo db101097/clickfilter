@@ -65,7 +65,7 @@ function onSubmit() {
     else {
       //var value = event.target.value;
       //console.log("value:", value)
-      console.log("ee", value)
+      console.log(value)
       formData.set('value', value);
 
       // backend API route for processing images.
@@ -118,6 +118,7 @@ $('a[href*="#"]')
   // Remove links that don't actually link to anything
   .not('[href="#"]')
   .not('[href="#0"]')
+  .not('[href="#myCarousel"]')
   .click(function(event) {
     // On-page links
     if (
