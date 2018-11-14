@@ -34,7 +34,8 @@ JEEFACEFILTERAPI.init({
 
 
 if (navigator.getUserMedia) {
-   navigator.getUserMedia({ audio: false, video: { width: 1280, height: 720 } },
+   //navigator.getUserMedia({ audio: false, video: { width: 1280, height: 1000 } },
+   navigator.getUserMedia({ audio: false, video: true },
       function(stream) {
          webcam = document.querySelector('video');
          webcam.srcObject = stream;
@@ -75,8 +76,8 @@ function init() {
   };
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
-    vertexShader: document.getElementById( 'vertexshader' ).textContent,
-    fragmentShader: document.getElementById( 'fragmentshader' ).textContent
+    vertexShader: document.getElementById('vertexshader').textContent,
+    fragmentShader: document.getElementById('blackhole').textContent
   } );
   material.extensions.derivatives = true;
   
@@ -119,7 +120,7 @@ $('#camFiltOne').click(function(){
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
     vertexShader: document.getElementById('vertexshader').textContent,
-    fragmentShader: document.getElementById('fragmentshader').textContent
+    fragmentShader: document.getElementById('blackhole').textContent
   } );
   material.extensions.derivatives = true;
   scene.remove(mesh)
@@ -135,7 +136,7 @@ $('#camFiltTwo').click(function(){
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
     vertexShader: document.getElementById('vertexshader').textContent,
-    fragmentShader: document.getElementById('fragmentshader_two').textContent
+    fragmentShader: document.getElementById('invert').textContent
   } );
   material.extensions.derivatives = true;
   scene.remove(mesh)
@@ -147,6 +148,16 @@ $('#camFiltTwo').click(function(){
 $('#camFiltThree').click(function(){
   $('#je').css("visibility","hidden");
   console.log("filt3")
+  console.log(material.fragmentShader)
+  material = new THREE.ShaderMaterial( {
+    uniforms: uniforms,
+    vertexShader: document.getElementById('vertexshader').textContent,
+    fragmentShader: document.getElementById('colors').textContent
+  } );
+  material.extensions.derivatives = true;
+  scene.remove(mesh)
+  mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
 });
 
 // Switch to Snapchat function

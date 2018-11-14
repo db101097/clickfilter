@@ -24,13 +24,13 @@
                             vec4(position,4.0);
         }
     </script>
-    <script type="x-shader/x-fragment" id="fragmentshader">
+    <script type="x-shader/x-fragment" id="invert">
         uniform sampler2D u_texture;
         uniform float time;
         varying vec2 vUv; // position?
     
         float wave(float x, float amount) {
-        return (sin(x * amount) + 1.) * .5;
+        return (sin(x * amount) + 1.0) * 0.5;
         }
     
         float tilt(vec2 p, float angle) {
@@ -40,28 +40,27 @@
         
         void main() {
         vec2 pos = (vUv - 0.1) * 1.4;
-        pos.x = pos.x + sin(pos.y*20.0+time*1.0)*0.03;
         
         vec4 color = texture2D(u_texture, pos);
         
         pos += tilt(pos, time / 1.0);
         
-        float rand = sin(time);
+        float rand = sin(time * 3.0);
             
-        gl_FragColor.r = wave(color.r + rand, 30.0);
+        gl_FragColor.r = wave(color.r + rand, 5.0);
         gl_FragColor.g = wave(color.g + rand, 5.0);
         gl_FragColor.b = wave(color.b + rand, 5.0);
         gl_FragColor.a = 1.0;
         
         }
     </script>
-    <script type="x-shader/x-fragment" id="fragmentshader_two">
+    <script type="x-shader/x-fragment" id="blackhole">
       uniform sampler2D u_texture;
       uniform float time;
       varying vec2 vUv; // position?
   
       float wave(float x, float amount) {
-      return (sin(x * amount) + 1.) * .5;
+      return (cos(x * amount) + 1.0) * 0.5;
       }
   
       float tilt(vec2 p, float angle) {
@@ -71,7 +70,8 @@
       
       void main() {
       vec2 pos = (vUv - 0.1) * 1.4;
-      pos.x = pos.x + sin(pos.y*20.0+time*100.0)*0.03;
+      pos.x = pos.x + sin(pos.x*10.0+time*5.0)*0.03;
+      pos.y = pos.y + sin(pos.y*20.0+time*5.0)*0.03;
       
       vec4 color = texture2D(u_texture, pos);
       
@@ -79,12 +79,41 @@
       
       float rand = sin(time);
           
-      gl_FragColor.r = wave(color.r + rand, 30.0);
-      gl_FragColor.g = wave(color.g + rand, 5.0);
-      gl_FragColor.b = wave(color.b + rand, 5.0);
+      gl_FragColor.r = color.r;
+      gl_FragColor.g = color.g;
+      gl_FragColor.b = color.b;
       gl_FragColor.a = 1.0;
       
       }
+  </script>
+  <script type="x-shader/x-fragment" id="colors">
+    uniform sampler2D u_texture;
+    uniform float time;
+    varying vec2 vUv; // position?
+
+    float wave(float x, float amount) {
+    return (sin(x * amount) + 1.0) * 0.5;
+    }
+
+    float tilt(vec2 p, float angle) {
+    vec2 direction = vec2(cos(30.00), sin(2.0));
+    return cos(dot(p, direction));
+    }
+    
+    void main() {
+    vec2 pos = (vUv - 0.1) * 1.4;
+    vec4 color = texture2D(u_texture, pos);
+    
+    pos += tilt(pos, time / 1.0);
+    
+    float rand = sin(time * 3.0);
+
+    gl_FragColor.r = wave(color.r + rand, 10.0);
+    gl_FragColor.g = wave(color.g + rand, 20.0);
+    gl_FragColor.b = wave(color.b + rand, 40.0);
+    gl_FragColor.a = 1.0;
+    
+    }
   </script>
     <script src="{{url_for('static', filename='js/three.min.js')}}"></script>
     </head>
@@ -189,9 +218,9 @@
           <h2 class="webcam-name">Smile Big!</h2>
           <div class="row">
               <div class="col text-center">
-                  <button type="button" class="btn btn-primary" id="camFiltOne">ONE</button>
-                  <button type="button" class="btn btn-primary" id="camFiltTwo">TWO</button>
-                  <button type="button" class="btn btn-primary" id="camFiltThree">THREE</button>
+                  <button type="button" class="btn btn-primary" id="camFiltOne">BLACKHOLE</button>
+                  <button type="button" class="btn btn-primary" id="camFiltTwo">INVERT</button>
+                  <button type="button" class="btn btn-primary" id="camFiltThree">COLORS</button>
                   <button type="button" class="btn btn-primary" id="camFiltSnap">SNAPCHAT</button>
               </div>
           </div>
