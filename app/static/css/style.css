@@ -101,16 +101,11 @@ h6 {
 
 .text-file-upload,
 .text-file-image{
-  margin-top:100px;
   font-family:  'Pacifico', cursive;
-  background-size: 200% 200%;
   color:white;
   text-transform:uppercase;
   font-weight:900;
   text-align:center;
-  margin-left:60px;
-
-
 }
 
 /*********************************************************** STICKY NAV */
