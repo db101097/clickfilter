@@ -8,6 +8,10 @@ let videoImage, videoImageContext, videoTexture;
 
 var CVD; //return of Canvas2DDisplay
 
+var think = new Image();
+think.Ing = this;
+think.src = document.getElementById("thinkfilter").src;
+
 JEEFACEFILTERAPI.init({
   canvasId: 'je',
   NNCpath: 'https://appstatic.jeeliz.com/faceFilter/', //root of NNC.json file
@@ -25,7 +29,8 @@ JEEFACEFILTERAPI.init({
       //draw a border around the face
       var faceCoo = CVD.getCoordinates(detectState);
       CVD.ctx.clearRect(0, 0, CVD.canvas.width, CVD.canvas.height);
-      CVD.ctx.strokeRect(faceCoo.x, faceCoo.y, faceCoo.w, faceCoo.h);
+      CVD.ctx.drawImage(think, faceCoo.x, faceCoo.y, faceCoo.w, faceCoo.h);
+      //CVD.ctx.strokeRect(faceCoo.x, faceCoo.y, faceCoo.w, faceCoo.h);
       CVD.update_canvasTexture();
     }
     CVD.draw();
