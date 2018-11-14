@@ -184,7 +184,6 @@ $('#camFiltShades').click(function(){
   // and SWAP IN the FEELIZ facetracking along with the
   // extra face tracking stuff
 think.src = document.getElementById("shades").src;
-CVD.ctx.drawImage(think,faceCoo.x,(faceCoo.y+faceCoo.h/2)-30,faceCoo.w,faceCoo.h/2);
 $('#canvas').css("visibility","hidden");
 $('#je').css("visibility","visible");
 // console.log("snapchat")
