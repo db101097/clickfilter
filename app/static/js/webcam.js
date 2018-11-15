@@ -8,6 +8,10 @@ let videoImage, videoImageContext, videoTexture;
 
 var CVD; //return of Canvas2DDisplay
 
+var think = new Image();
+think.Ing = this;
+think.src = document.getElementById("thinkfilter").src;
+
 JEEFACEFILTERAPI.init({
   canvasId: 'je',
   NNCpath: 'https://appstatic.jeeliz.com/faceFilter/', //root of NNC.json file
@@ -25,7 +29,8 @@ JEEFACEFILTERAPI.init({
       //draw a border around the face
       var faceCoo = CVD.getCoordinates(detectState);
       CVD.ctx.clearRect(0, 0, CVD.canvas.width, CVD.canvas.height);
-      CVD.ctx.strokeRect(faceCoo.x, faceCoo.y, faceCoo.w, faceCoo.h);
+      CVD.ctx.drawImage(think, faceCoo.x, faceCoo.y, faceCoo.w, faceCoo.h);
+      //CVD.ctx.strokeRect(faceCoo.x, faceCoo.y, faceCoo.w, faceCoo.h);
       CVD.update_canvasTexture();
     }
     CVD.draw();
@@ -34,7 +39,8 @@ JEEFACEFILTERAPI.init({
 
 
 if (navigator.getUserMedia) {
-   navigator.getUserMedia({ audio: false, video: { width: 1280, height: 720 } },
+   //navigator.getUserMedia({ audio: false, video: { width: 1280, height: 1000 } },
+   navigator.getUserMedia({ audio: false, video: true },
       function(stream) {
          webcam = document.querySelector('video');
          webcam.srcObject = stream;
@@ -75,8 +81,8 @@ function init() {
   };
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
-    vertexShader: document.getElementById( 'vertexshader' ).textContent,
-    fragmentShader: document.getElementById( 'fragmentshader' ).textContent
+    vertexShader: document.getElementById('vertexshader').textContent,
+    fragmentShader: document.getElementById('blackhole').textContent
   } );
   material.extensions.derivatives = true;
   
@@ -114,12 +120,12 @@ function render() {
 // Filter One Function
 $('#camFiltOne').click(function(){
   $('#je').css("visibility","hidden");
-  console.log("filt1")
-  console.log(material.fragmentShader)
+  // console.log("filt1")
+  // console.log(material.fragmentShader)
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
     vertexShader: document.getElementById('vertexshader').textContent,
-    fragmentShader: document.getElementById('fragmentshader').textContent
+    fragmentShader: document.getElementById('blackhole').textContent
   } );
   material.extensions.derivatives = true;
   scene.remove(mesh)
@@ -130,12 +136,12 @@ $('#camFiltOne').click(function(){
 // Filter Two Function
 $('#camFiltTwo').click(function(){
   $('#je').css("visibility","hidden");
-  console.log("filt2")
-  console.log(material.fragmentShader)
+  // console.log("filt2")
+  // console.log(material.fragmentShader)
   material = new THREE.ShaderMaterial( {
     uniforms: uniforms,
     vertexShader: document.getElementById('vertexshader').textContent,
-    fragmentShader: document.getElementById('fragmentshader_two').textContent
+    fragmentShader: document.getElementById('invert').textContent
   } );
   material.extensions.derivatives = true;
   scene.remove(mesh)
@@ -146,7 +152,17 @@ $('#camFiltTwo').click(function(){
 // Filter Three Function
 $('#camFiltThree').click(function(){
   $('#je').css("visibility","hidden");
-  console.log("filt3")
+  // console.log("filt3")
+  // console.log(material.fragmentShader)
+  material = new THREE.ShaderMaterial( {
+    uniforms: uniforms,
+    vertexShader: document.getElementById('vertexshader').textContent,
+    fragmentShader: document.getElementById('colors').textContent
+  } );
+  material.extensions.derivatives = true;
+  scene.remove(mesh)
+  mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
 });
 
 // Switch to Snapchat function
@@ -155,7 +171,20 @@ $('#camFiltSnap').click(function(){
     // this code should SWAP OUT or HIDE the THREE.js webcam
     // and SWAP IN the FEELIZ facetracking along with the
     // extra face tracking stuff
+  think.src = document.getElementById("thinkfilter").src;
   $('#canvas').css("visibility","hidden");
   $('#je').css("visibility","visible");
-  console.log("snapchat")
+  // console.log("snapchat")
+});
+
+// Switch to Snapchat function
+$('#camFiltShades').click(function(){
+  // code here
+  // this code should SWAP OUT or HIDE the THREE.js webcam
+  // and SWAP IN the FEELIZ facetracking along with the
+  // extra face tracking stuff
+think.src = document.getElementById("shades").src;
+$('#canvas').css("visibility","hidden");
+$('#je').css("visibility","visible");
+// console.log("snapchat")
 });

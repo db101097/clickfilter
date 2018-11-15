@@ -10,7 +10,7 @@
   font-family: 'Pacifico', cursive;
   font-weight:900;
   padding:10px;
-  margin-top:10px;
+  margin-top:3px;
 }
 
 
@@ -101,16 +101,11 @@ h6 {
 
 .text-file-upload,
 .text-file-image{
-  margin-top:100px;
   font-family:  'Pacifico', cursive;
-  background-size: 200% 200%;
   color:white;
   text-transform:uppercase;
   font-weight:900;
-
-  margin-left:60px;
-
-
+  text-align:center;
 }
 
 /*********************************************************** STICKY NAV */

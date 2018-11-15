@@ -45,9 +45,11 @@ $('#myCarousel').on('slid.bs.carousel', function (e) {
     var ele = $('#myCarousel .carousel-indicators li.active');
     value = ele.data('value')
     onSubmit();
+    /*
     console.log('target: ' + ele.data('target') + 
                 ' value: ' + ele.data('value') + 
                 ' slide-to: ' + ele.data('slideTo'));
+                */
 })
 
 // Takes user selection from radio buttons as event.
@@ -65,7 +67,7 @@ function onSubmit() {
     else {
       //var value = event.target.value;
       //console.log("value:", value)
-      console.log("ee", value)
+      //console.log(value)
       formData.set('value', value);
 
       // backend API route for processing images.
@@ -114,3 +116,39 @@ function mOut() {
     img.src = temp2
     // console.log("hover OUT")
 }
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .not('[href="#myCarousel"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });

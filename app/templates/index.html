@@ -4,7 +4,7 @@
       <title>ClickFilter App!</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link async href="http://fonts.googleapis.com/css?family=Bad%20Script" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+      <link async href="https://fonts.googleapis.com/css?family=Bad%20Script" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
       <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,13 +24,13 @@
                             vec4(position,4.0);
         }
     </script>
-    <script type="x-shader/x-fragment" id="fragmentshader">
+    <script type="x-shader/x-fragment" id="invert">
         uniform sampler2D u_texture;
         uniform float time;
         varying vec2 vUv; // position?
     
         float wave(float x, float amount) {
-        return (sin(x * amount) + 1.) * .5;
+        return (sin(x * amount) + 1.0) * 0.5;
         }
     
         float tilt(vec2 p, float angle) {
@@ -40,28 +40,27 @@
         
         void main() {
         vec2 pos = (vUv - 0.1) * 1.4;
-        pos.x = pos.x + sin(pos.y*20.0+time*1.0)*0.03;
         
         vec4 color = texture2D(u_texture, pos);
         
         pos += tilt(pos, time / 1.0);
         
-        float rand = sin(time);
+        float rand = sin(time * 3.0);
             
-        gl_FragColor.r = wave(color.r + rand, 30.0);
+        gl_FragColor.r = wave(color.r + rand, 5.0);
         gl_FragColor.g = wave(color.g + rand, 5.0);
         gl_FragColor.b = wave(color.b + rand, 5.0);
         gl_FragColor.a = 1.0;
         
         }
     </script>
-    <script type="x-shader/x-fragment" id="fragmentshader_two">
+    <script type="x-shader/x-fragment" id="blackhole">
       uniform sampler2D u_texture;
       uniform float time;
       varying vec2 vUv; // position?
   
       float wave(float x, float amount) {
-      return (sin(x * amount) + 1.) * .5;
+      return (cos(x * amount) + 1.0) * 0.5;
       }
   
       float tilt(vec2 p, float angle) {
@@ -71,7 +70,8 @@
       
       void main() {
       vec2 pos = (vUv - 0.1) * 1.4;
-      pos.x = pos.x + sin(pos.y*20.0+time*100.0)*0.03;
+      pos.x = pos.x + sin(pos.x*10.0+time*5.0)*0.03;
+      pos.y = pos.y + sin(pos.y*20.0+time*5.0)*0.03;
       
       vec4 color = texture2D(u_texture, pos);
       
@@ -79,12 +79,41 @@
       
       float rand = sin(time);
           
-      gl_FragColor.r = wave(color.r + rand, 30.0);
-      gl_FragColor.g = wave(color.g + rand, 5.0);
-      gl_FragColor.b = wave(color.b + rand, 5.0);
+      gl_FragColor.r = color.r;
+      gl_FragColor.g = color.g;
+      gl_FragColor.b = color.b;
       gl_FragColor.a = 1.0;
       
       }
+  </script>
+  <script type="x-shader/x-fragment" id="colors">
+    uniform sampler2D u_texture;
+    uniform float time;
+    varying vec2 vUv; // position?
+
+    float wave(float x, float amount) {
+    return (sin(x * amount) + 1.0) * 0.5;
+    }
+
+    float tilt(vec2 p, float angle) {
+    vec2 direction = vec2(cos(30.00), sin(2.0));
+    return cos(dot(p, direction));
+    }
+    
+    void main() {
+    vec2 pos = (vUv - 0.1) * 1.4;
+    vec4 color = texture2D(u_texture, pos);
+    
+    pos += tilt(pos, time / 1.0);
+    
+    float rand = sin(time * 3.0);
+
+    gl_FragColor.r = wave(color.r + rand, 10.0);
+    gl_FragColor.g = wave(color.g + rand, 20.0);
+    gl_FragColor.b = wave(color.b + rand, 40.0);
+    gl_FragColor.a = 1.0;
+    
+    }
   </script>
     <script src="{{url_for('static', filename='js/three.min.js')}}"></script>
     </head>
@@ -96,9 +125,9 @@
         <ul class="nav navbar-nav">
            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i></a>
               <ul class="dropdown-menu">
-              <li><a id="home-nav" href="#">Home</a></li>
-              <li><a id="webcam-nav" href="#">Webcam </a></li>
-              <li><a id="team-nav" href="#">Our Team</a></li>
+              <li><a href="#home-nav" >Home</a></li>
+              <li><a href="#webcam-nav" >Webcam </a></li>
+              <li><a href="#socialmedia-nav">Follow Us!</a></li>
             </ul>
           </li>
 
@@ -108,8 +137,8 @@
     <body>
 
 
-
-    <div class="container">
+   <!------------------------------------------------------------------------Upload Image Text--->
+    <div id="home-nav" class="container">
       <div class="row js--wp-2">
         <div class="col-sm-4">
         </div>
@@ -126,7 +155,7 @@
       </div>
     </div>
         
-    <!-------------------------Input Filters------------------------------------>
+     <!-----------------------------------------------------Upload picture /Apply Filter Section--->
         <div class="container">
           <div class="row">
               <div class="col-md-12">
@@ -135,7 +164,7 @@
                       <span class="glyphicon glyphicon-chevron-left"></span>
                       <span class="sr-only">Previous</span>
                   </a>
-                  <img class="img-responsive center-block" id="myimage" src="{{ url_for('static', filename='placeholder.png') }}" 
+                  <img class="img-responsive center-block" id="myimage" src="" 
                   onmouseover="mHover()" onmouseout="mOut()">
                   <a class="right carousel-control" href="#myCarousel" data-slide="next">
                       <span class="glyphicon glyphicon-chevron-right"></span>
@@ -183,15 +212,19 @@
         </div> 
 
     <br><br>
-      <div class="webcam-section js--wp-3">
+             <!------------------------------------------------------Webcam Section--------------------------->
+             <img src="{{ url_for('static', filename='thinking.ico') }}" id="thinkfilter" width="0" height="0">
+             <img src="{{ url_for('static', filename='sg.ico') }}" id="shades" width="0" height="0">
+      <div id="webcam-nav" class="webcam-section js--wp-3">
         <div class="col">
           <h2 class="webcam-name">Smile Big!</h2>
           <div class="row">
               <div class="col text-center">
-                  <button type="button" class="btn btn-primary" id="camFiltOne">ONE</button>
-                  <button type="button" class="btn btn-primary" id="camFiltTwo">TWO</button>
-                  <button type="button" class="btn btn-primary" id="camFiltThree">THREE</button>
+                  <button type="button" class="btn btn-primary" id="camFiltOne">BLACKHOLE</button>
+                  <button type="button" class="btn btn-primary" id="camFiltTwo">INVERT</button>
+                  <button type="button" class="btn btn-primary" id="camFiltThree">COLORS</button>
                   <button type="button" class="btn btn-primary" id="camFiltSnap">SNAPCHAT</button>
+                  <button type="button" class="btn btn-primary" id="camFiltShades">SHADES</button>
               </div>
           </div>
           <div id="container-fluid">
@@ -207,7 +240,7 @@
     <footer class="page-footer font-small cyan darken-3">
 
         <!-- Footer Elements -->
-        <div class="container">
+        <div  id="socialmedia-nav" class="container">
 
           <!-- Grid row-->
           <div class="row">
