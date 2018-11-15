@@ -1,0 +1,99 @@
+<!--Doctype HTML-->
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script src="https://appstatic.jeeliz.com/faceFilter/jeelizFaceFilter.js"></script>
+    <script src="https://appstatic.jeeliz.com/faceFilter/Canvas2DDisplay.js"></script>
+    <script type="x-shader/x-vertex" id="vertexshader">
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position =   projectionMatrix * 
+                            modelViewMatrix * 
+                            vec4(position,4.0);
+        }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentshader">
+        uniform sampler2D u_texture;
+        uniform float time;
+        varying vec2 vUv; // position?
+    
+        float wave(float x, float amount) {
+        return (sin(x * amount) + 1.) * .5;
+        }
+    
+        float tilt(vec2 p, float angle) {
+        vec2 direction = vec2(cos(45.00), sin(50.0));
+        return cos(dot(p, direction));
+        }
+        
+        void main() {
+        vec2 pos = (vUv - 0.1) * 1.4;
+        pos.x = pos.x + sin(pos.y*20.0+time*1.0)*0.03;
+        
+        vec4 color = texture2D(u_texture, pos);
+        
+        pos += tilt(pos, time / 1.0);
+        
+        float rand = sin(time);
+            
+        gl_FragColor.r = wave(color.r + rand, 30.0);
+        gl_FragColor.g = wave(color.g + rand, 5.0);
+        gl_FragColor.b = wave(color.b + rand, 5.0);
+        gl_FragColor.a = 1.0;
+        
+        }
+    </script>
+    <script src="{{url_for('static', filename='js/three.min.js')}}"></script>
+    <title> Filter Flask App!</title>
+    
+</head>
+    
+    <body>
+     <header>
+        <nav>
+        <div class="row">
+
+                  <h1 id="main-title">ClickFilter</h1>
+                     
+            
+          </div>
+        </nav> 
+    </header>
+         <div class="row page">
+            <div class="col span-1-of-2 box">
+             <h2 class="upload-img text-file-upload"> Upload Image</h2>
+               
+                 <img id="myimage" height="400" width="500" onmouseover="mHover()" onmouseout="mOut()">
+                
+                <input type="file" name="pic" accept="image/*" onchange="showPicture(event)" class="upload-pic">
+              <form class="form-filter" action="">
+                  <!-- Template this so we look like smart programmers -->
+              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="contour"> Contour
+              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="emboss"> Emboss
+              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="edge"> Edge
+			  <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="vintage"> Vintage
+		      <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="movie_moment"> Movie Moment
+              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="noir"> Noir
+              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="juicy"> Juicy
+              <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="slumber"> Slumber
+			  <input type="radio" onclick="onSubmit(event)" name="filterStyle" value="face_blur"> Face Blur
+            </form>
+
+            <!--These four elements are needed for webcam filter-->
+            <div id="container"></div>
+            <video id="webcam" width="640" height="480"></video>
+            <canvas id="canvas" width="640" height="480"></canvas>
+            <canvas width="300" height="300" id="je"></canvas>
+            <!--Insert html stuff for webcam filter OPTIONS-->
+              
+        </div>
+        </div>
+            <script src="{{url_for('static', filename='js/main.js')}}"></script>
+            <script src="{{url_for('static', filename='js/webcam.js')}}"></script>
+
+ </body>    
+</html>
