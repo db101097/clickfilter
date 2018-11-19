@@ -27,9 +27,10 @@ Preview our app on [Heroku!](https://clickfilters.herokuapp.com/ "https://clickf
 * Display the filtered image to the user.
 
 ## Version 2 Requirements
-* We were allowed to do whatever we wanted, as long as we used new tech so...
-* We built a video filtering system using WebGL + THREEjs!
+* We were allowed to do whatever we wanted, as long as we used new tech :)
+* Built a video filtering system using WebGL + THREEjs!
 * Added a facetracking filter in the same vein as Snapchat using Jeeliz-WebGL
+* Rebuilt the frontend UI/UX experience using Bootstrap, and jinga2 templating
 
 ## How To Run
 1. Clone or download this repo into a directory of your choosing.
