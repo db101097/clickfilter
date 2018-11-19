@@ -1,26 +1,37 @@
-# filter-app-v1 <img src="readmelogo.png" width="8%" height="8%" />
-A simple web-app for image filtering.
+# filter-app-v2 <img src="readmelogo.png" width="8%" height="8%" />
+A web-app for image & video filtering, much like instagram and snapchat.
 
-Preview our app on [Heroku!](http://clickfilters.herokuapp.com/ "http://clickfilters.herokuapp.com/")
+Preview our app on [Heroku!](https://clickfilters.herokuapp.com/ "https://clickfilters.herokuapp.com/")
 
-###### filter-app-v2 coming soon, 12/14/2018
-### Tech in use:
+###### filter-app-v1 is now filter-app-v2 as of 11/14/2018 !!
+### Tech in use
 * Frontend
-  * HTML/CSS/JavaScript + jQuery
+  * HTML/CSS-Bootstrap
+  * JavaScript + jQuery
+  * WebGL, THREE.js, Jeeliz API
 * Middleware
   * Eventually..
 * Backend
   * Flask (Python)
   * Pillow, OpenCV, Python libs for image processing
 * Hosted on
+  * https://clickfilters.herokuapp.com/
   * Locally @ localhost:5000
-  * http://clickfilters.herokuapp.com/
+  
+## Docs
+ * Coming soon!
+
 ## Version 1 Requirements
 * Allow a user to choose a picture to filter (uploaded images).
 * Allow a user to select from 3 potential image filters (of your choosing).
 * Display the filtered image to the user.
 
-## How To Run:
+## Version 2 Requirements
+* We were allowed to do whatever we wanted, as long as we used new tech so...
+* We built a video filtering system using WebGL + THREEjs!
+* Added a facetracking filter in the same vein as Snapchat using Jeeliz-WebGL
+
+## How To Run
 1. Clone or download this repo into a directory of your choosing.
 2. In a Command Line Interface of your choosing create a virtual environment
 
