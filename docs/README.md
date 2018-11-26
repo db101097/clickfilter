@@ -14,7 +14,7 @@ Preview our app on [Heroku!](http://clickfilters.herokuapp.com/ "http://clickfil
   * [threejs](https://threejs.org/) used to convert a webcam stream into a 2D texture.
   * [Jeeliz FaceFilter API](https://jeeliz.com/) used for our facetracking filters.
 * Backend
-  * [Flask](http://flask.pocoo.org/)
+  * [Flask](http://flask.pocoo.org/) backend framework.
   * [Pillow](https://pillow.readthedocs.io/en/5.3.x/) image processing library, used in ClickFilters to modify images.
   * [OpenCV](https://opencv.org/) image processing library, used in routes.py to modify images.
 * Hosted on
