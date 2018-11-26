@@ -1,8 +1,6 @@
 # Docs
 Almost everything you need to know!
 
-Preview our app on [Heroku!](http://clickfilters.herokuapp.com/ "http://clickfilters.herokuapp.com/")
-
 ### Tech in use:
 * Frontend
   * HTML
