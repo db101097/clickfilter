@@ -5,6 +5,7 @@ Preview our app on [Heroku!](https://clickfilters.herokuapp.com/ "https://clickf
 
 ###### filter-app-v1 is now filter-app-v2 as of 11/14/2018 !!
 ### Tech in use
+##### Check out our [docs](https://github.com/kre64/filter-app-v1/tree/master/docs) for more details!
 * Frontend
   * HTML/CSS-Bootstrap
   * JavaScript + jQuery
@@ -17,8 +18,6 @@ Preview our app on [Heroku!](https://clickfilters.herokuapp.com/ "https://clickf
 * Hosted on
   * https://clickfilters.herokuapp.com/
   * Locally @ localhost:5000
-  
-## [Docs](https://github.com/kre64/filter-app-v1/tree/master/docs)
 
 ## Version 1 Requirements
 * Allow a user to choose a picture to filter (uploaded images).
