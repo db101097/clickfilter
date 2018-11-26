@@ -3,14 +3,16 @@ Almost everything you need to know!
 
 Preview our app on [Heroku!](http://clickfilters.herokuapp.com/ "http://clickfilters.herokuapp.com/")
 
-###### filter-app-v2 coming soon, 12/14/2018
 ### Tech in use:
 * Frontend
   * HTML
-  * CSS + [Bootstrap v3.3.7](http://bootstrapdocs.com/v3.3.6/docs/)
-  * Vanilla JavaScript + jQuery
+  * CSS
+  * [Bootstrap v3.3.7](http://bootstrapdocs.com/v3.3.6/docs/)
+  * Vanilla JavaScript
+  * jQuery
 * Backend
-  * Flask (Python)
-  * Pillow, OpenCV
+  * [Flask](http://flask.pocoo.org/)
+  * [Pillow](https://pillow.readthedocs.io/en/5.3.x/)
+  * [OpenCV](https://opencv.org/)
 * Hosted on
   * https://clickfilters.herokuapp.com/
