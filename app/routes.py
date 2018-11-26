@@ -23,6 +23,7 @@ if __name__ == "__main__":
 @app.route('/')
 @app.route('/home')
 def home():
+	# filters to be passed for HTML templating.
     filters = [
         'contour',
         'emboss',
