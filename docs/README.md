@@ -1,4 +1,6 @@
-# Docs
+# Check out our [wiki](https://github.com/kre64/filter-app-v1/wiki) for the latest docs.
+
+## Docs
 Almost everything you need to know!
 
 ### Tech in use:
