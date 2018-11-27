@@ -3,10 +3,7 @@ A web-app for image & video filtering, much like instagram and snapchat.
 
 View our app live on [Heroku!](https://clickfilters.herokuapp.com/ "https://clickfilters.herokuapp.com/")
 
-check out our [wiki](https://github.com/kre64/filter-app-v1/wiki) for more information on the app.
-
-
-###### filter-app-v1 is now filter-app-v2 as of 11/14/2018 !!
+##### check out our [wiki](https://github.com/kre64/filter-app-v1/wiki) for more information.
 ## Tech in use
 ##### Check out our [docs](https://github.com/kre64/filter-app-v1/tree/master/docs) for more details!
 * Frontend
