@@ -45,11 +45,6 @@ $('#myCarousel').on('slid.bs.carousel', function (e) {
     var ele = $('#myCarousel .carousel-indicators li.active');
     value = ele.data('value')
     onSubmit();
-    /*
-    console.log('target: ' + ele.data('target') + 
-                ' value: ' + ele.data('value') + 
-                ' slide-to: ' + ele.data('slideTo'));
-                */
 })
 
 // Takes user selection from radio buttons as event.
@@ -106,15 +101,12 @@ function mHover() {
     var img = document.getElementById("myimage")
     temp2 = img.src
     img.src = temp1
-    // console.log("hover")
-
 }
 
 // On mouse click UP show user their filtered image
 function mOut() {
     var img = document.getElementById("myimage")
     img.src = temp2
-    // console.log("hover OUT")
 }
 $('a[href*="#"]')
   // Remove links that don't actually link to anything

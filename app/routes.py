@@ -19,7 +19,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if __name__ == "__main__":
     app.run(debug=True)
 
-
+# route for homepage
 @app.route('/')
 @app.route('/home')
 def home():
@@ -43,17 +43,18 @@ def filterimg():
     # Endpoint for image processing/filtering.
     # todo: encapsulate things so everything is simpler to test
 
-    # value = requested filterstyle from frontend.
+    # value = requested filter value from frontend.
     # img   = img data from frontend.
     value = request.form['value']
-    # print(value)
+
     # removes the padding from the img data.
     # decodes the base64 img into a readable bytestream and reads it.
+    # img_io is a new bytestream that will hold the filtered result.
     img = re.sub('^data:image/.+;base64,', '', request.form['img'])
     img = Image.open(BytesIO(base64.b64decode(img)))
     img_io = BytesIO()
 
-    # encapsulated stuff
+    # create ClickFilter object, see clickfilter.py
     target_image = ClickFilter(value, img_io, img)
     '''
     print(

@@ -6,7 +6,12 @@ import PIL
 import numpy as np
 from PIL import Image, ImageFilter, ImageEnhance
 
-
+'''
+ClickFilter class takes
+filtervalue f
+bytestream io
+image file i
+'''
 class ClickFilter:
     def __init__(self, f, io, i):
         self.filter_value = f
