@@ -1,0 +1,18 @@
+Retrospective Notes for Version 2:
+
+Fix performance
+Always need to have in mind, way we handle webcam
+	Webcam stream, multiple streams,
+	Keep tidying up back end code
+	Encapsulation
+	
+Doggy filter
+	Works, only needs to be integrated
+	Image is split into multiple image, trickest part
+	Definitely push to get done since already mostly finished
+		Nose always lines up well, ears are a problem
+		Audio loop
+Further testing
+Check on different platforms
+On mobile, how the filter part works
+
