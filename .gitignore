@@ -6,6 +6,7 @@ dist/
 *.pyc
 __pycache__/
 app/__pycache__/*.cpython-37.pyc
+app/__pycache__/*.cpython-36.pyc
 *.cpython-36.pyc
 *.cpython-37.pyc
 */*/*/__pycache__/

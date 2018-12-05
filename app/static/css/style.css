@@ -106,6 +106,11 @@ h6 {
   text-transform:uppercase;
   font-weight:900;
   text-align:center;
+  cursor: pointer;
+}
+
+.upload-pic{
+    display: none;
 }
 
 /*********************************************************** STICKY NAV */
@@ -120,8 +125,6 @@ h6 {
   }
 .white{
     background-color: white;
-    max-width: 1240px;
-    max-height: 1200px;
 }
 label{
     display: inline-flex;
@@ -245,19 +248,11 @@ footer{
 }
 
 #container {
-    width: 480px;
+    width: 100%;
     margin: auto;
     padding: 2em;
     position: absolute;
 }
-
-#container-fluid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 500px;
-    width: 100%;
-  }
   
 #webcam {
     visibility: hidden;
@@ -298,79 +293,7 @@ footer{
     background-repeat: repeat-x;
 }
 
-.carousel-indicators {
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-    left: 0;
-    z-index: 15;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    padding-left: 0;
-    margin-right: 15%;
-    margin-left: 15%;
-    list-style: none;
-}
-
-.carousel-indicators li {
-    position: relative;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    width: 30px;
-    height: 5px;
-    margin-right: 3px;
-    margin-left: 3px;
-    text-indent: -999px;
-    background-color: rgba(255,255,255,.5);
-}
-
-.carousel-indicators li::before {
-    position: absolute;
-    top: -10px;
-    left: 0;
-    display: inline-block;
-    width: 100%;
-    height: 10px;
-}
-
-.carousel-indicators li::after {
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    display: inline-block;
-    width: 100%;
-    height: 10px;
-    content: "";
-}
-
-.carousel-indicators .active {
-    position: relative;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    width: 30px;
-    height: 5px;
-    margin-right: 3px;
-    margin-left: 3px;
-    text-indent: -999px;
-    background-color: #fff;
-}
-
-ol.carousel-indicators {
-    position: absolute;
-    bottom: 0;
-    margin: 0;
-    left: 0;
-    right: 0;
-    width: auto;
-}
-
-  .carousel-caption {
+.carousel-caption {
     position: absolute;
     right: 15%;
     bottom: 20px;
@@ -381,4 +304,13 @@ ol.carousel-indicators {
     color: #fff;
     text-align: center;
     text-shadow: 0 2px 4px rgba(0,0,0,.6);
+}
+
+.carousel-indicators {
+    margin-bottom: 2em;
+}
+
+.camvas{
+    height: inherit !important;
+    padding: 3em;
 }

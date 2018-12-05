@@ -60,7 +60,8 @@ function init() {
   renderer = new THREE.WebGLRenderer({ preserveDrawingBuffer: !0 });
   renderer.setPixelRatio(2);
   
-  container = document.getElementById('container-fluid');
+  container = document.getElementById('webcam-nav');
+  renderer.setSize($(container).width(), $(container).height());
   container.appendChild( renderer.domElement );
   
 }
