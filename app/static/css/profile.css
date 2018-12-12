@@ -69,3 +69,20 @@ body {
 .bg-clickfilter {
   background-color: #9D5C63;
 }
+
+.profile-header {
+  background-color: #FFF8E8;
+  color: #E4BB97;
+  width: inherit;
+}
+
+.albumwrapper {
+  background-color: #FFF8E8;
+  padding: 1em;
+}
+
+.single-album {
+  background-color: #E4BB97;
+  color: #FFF8E8;
+  margin: 1em;
+}
