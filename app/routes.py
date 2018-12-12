@@ -19,23 +19,27 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if __name__ == "__main__":
     app.run(debug=True)
 
-# route for homepage
 @app.route('/')
 @app.route('/home')
 def home():
+    return render_template('home.html')
+
+# route for photomode
+@app.route('/photomode')
+def photomode():
 	# filters to be passed for HTML templating.
     filters = [
         'contour',
         'emboss',
         'edge',
         'vintage',
-        'movie_moment',
+        # 'movie_moment',
         'noir',
         'juicy',
         'slumber',
         'face_blur',
     ]
-    return render_template('index.html', filters=filters)
+    return render_template('photomode.html', filters=filters)
 
 
 @app.route('/filterimg', methods=['GET', 'POST'])
