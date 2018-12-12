@@ -24,6 +24,14 @@ if __name__ == "__main__":
 def home():
     return render_template('home.html')
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+@app.route('/album')
+def album():
+    return render_template('album.html')
+
 # route for photomode
 @app.route('/photomode')
 def photomode():
