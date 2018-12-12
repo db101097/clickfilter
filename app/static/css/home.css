@@ -1,0 +1,130 @@
+/*
+#584B53 Dark Liver
+#9D5C63 Rose Dust
+#FFF8E8 Cosmic Latte
+#E84F47 Carmien Pink
+#E4BB97 Pale Gold
+*/
+
+html,
+body {
+  height: 100%;
+  margin: auto;
+  font-family: Helvetica, sans-serif;
+  background-color: #FFF8E8;
+}
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed; 
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: #FFF8E8; 
+  overflow-x: hidden; 
+  padding-top: 10vh; 
+  transition: 0.5s; 
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  line-height: 1.5em;
+  font-size: 25px;
+  color: #584B53;
+  display: block;
+  transition: 0.3s;
+  letter-spacing: 2px;
+}
+
+.sidenav a:hover {
+  color: #E4BB97;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 36px;
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.bg-clickfilter {
+  background-color: #9D5C63;
+}
+
+.bgone, .catselfie_a, .catselfie_b, .catselfie_c,
+.catselfie_d, .catselfie_a_full {
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgone {
+  background-image: url('/static/img/bwdog.png');
+  min-height: 100%;
+}
+
+.catselfie_a {
+  background-image: url('/static/img/catselfiea.jpg');
+  min-height: 40vh;
+}
+
+.catselfie_a_full {
+  background-image: url('/static/img/catselfiea.jpg');
+  min-height: 100%;
+}
+
+.catselfie_b {
+  background-image: url('/static/img/catselfieb.png');
+  min-height: 60vh;
+}
+
+.catselfie_c {
+  background-image: url('/static/img/catselfiec.png');
+  min-height: 100%;
+}
+
+.catselfie_d {
+  background-image: url('/static/img/catselfied.png');
+  min-height: 100%;
+}
+
+.caption {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.paragraph {
+  color: red;
+  background-color: black;
+  padding: 1em;
+}
+
+.filterad {
+  padding: 1em;
+  position: relative;
+  background-color: #FFF8E8;
+  color: #E4BB97;
+}
