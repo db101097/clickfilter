@@ -128,11 +128,12 @@ body {
   color: #E84F47;
   font-weight: 900;
   font-size: 36px;
+  top: 41%;
+  margin: auto;
 }
 
 .bg_home {
   letter-spacing: 2px;
-  padding: .5em;
   background-color: rgba(0,0,0,0.7);
   padding: 0.5em;
 }
