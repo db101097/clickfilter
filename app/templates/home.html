@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Click Filters</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" 
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" 
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" 
+    href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" 
+    integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" 
+    crossorigin="anonymous">
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" id="closeDrawer">
+                <i class="fas fa-bars"></i>
+            </a>
+            <a href="#">Profile Name</a>
+            <a href="#">Albums</a>
+            <a href="#">Photomode</a>
+            <a href="#">Videomode</a>
+            </div>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-clickfilter">
+            <a href="#" class="navbar-brand" id="openDrawer">
+                <i class="fas fa-bars" style="font-size:36px;"></i>
+            </a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Bootstrap<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Template</a>
+                <a class="nav-item nav-link" href="#">probably</a>
+                <a class="nav-item nav-link disabled" href="#">no navbar on this page?</a>
+            </div>
+    </nav>
+    </div>
+
+    <div class="bgone">
+        <div class="row text-center caption">
+            <div class="col">
+                <h1>Lorem ipsum dolor sit amet.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="paragraph">
+        <div class="row text-center">
+            <div class="col">
+                <h3>Pellentesque ac rhoncus lacus, eget.</h3>
+                <p>Donec et purus id massa faucibus mollis id tristique dui. 
+                    Vivamus elementum venenatis accumsan. Nunc at sodales sem. Phasellus nibh ante, suscipit in hendrerit nec, ultrices ac velit. 
+                    Integer auctor consectetur feugiat. Nulla auctor massa malesuada purus luctus, at venenatis libero ornare. Donec turpis diam, 
+                    pulvinar nec nibh id, lobortis scelerisque massa. Mauris in ante vitae nulla varius ultricies. Integer at pharetra nisl. 
+                    Maecenas enim lectus, elementum eleifend luctus a, rhoncus laoreet diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
+                    Etiam in odio quis odio gravida dignissim. Quisque commodo sem a feugiat fermentum. Donec egestas gravida nibh, non fringilla augue fringilla eget. 
+                    Nullam vitae dolor interdum lacus euismod commodo. Morbi vehicula mollis nunc, tristique tempus mi dapibus non.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="catselfie_a">
+        <div class="row text-center caption">
+            <div class="col">
+                <h1>Lorem ipsum dolor sit amet.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="filterad">
+        <div class="row text-center">
+            <div class="col">
+                <p>Ahhhhh some words go here lol!!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="catselfie_b">
+        <div class="row text-center caption">
+            <div class="col">
+                <h1>Lorem ipsum dolor sit amet.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="filterad">
+        <div class="row text-center">
+            <div class="col">
+                <p>Ahhhhh some words go here lol!!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="catselfie_c">
+        <div class="row text-center caption">
+            <div class="col">
+                <h1>Lorem ipsum dolor sit amet.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="catselfie_d">
+        <div class="row text-center caption">
+            <div class="col">
+                <h1>Lorem ipsum dolor sit amet.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="filterad">
+        <div class="row text-center">
+            <div class="col">
+                <p>Ahhhhh some words go here lol!!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="catselfie_a_full">
+        <div class="row text-center caption">
+            <div class="col">
+                <h1>Lorem ipsum dolor sit amet.</h1>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="{{url_for('static', filename='js/home.js')}}"></script>
+</body>
+</html>
