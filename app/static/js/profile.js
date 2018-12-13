@@ -11,3 +11,8 @@ $('#closeDrawer').click(function() {
 $('#addNewAlbum').click(function() {
     console.log("Implement addNewAlbum")
 });
+
+$('#albumModal').on('show.bs.modal', function (event) {
+    var modal = $(this)
+    modal.find('.modal-title').text('Adding a new album..')
+  })

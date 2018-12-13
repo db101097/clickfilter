@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <Photo title>My Profile</Photo title>
+    <title>My Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/album.css') }}">
@@ -106,10 +106,30 @@
                 <p class="lead p-bot">Photo Title.</p>
             </div>      
             <div class="col-3 add-photo">
-                <div class="center-me" id="addNewPhoto">
+                <div class="center-me" id="addNewPhoto" data-toggle="modal" data-target="#photoModal">
                     <h4>Add New Photo!</h4>
                     <i class="fa fa-plus" style="font-size:36px;"></i>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="photoModalLabel">This gets replaced in *.js</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h1>Fill the body with some way of adding photos.</h1>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add Photo</button>
+            </div>
             </div>
         </div>
     </div>
