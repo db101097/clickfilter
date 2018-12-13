@@ -69,3 +69,48 @@ body {
 .bg-clickfilter {
   background-color: #9D5C63;
 }
+
+.profile-header {
+  background-color: #FFF8E8;
+  color: #E4BB97;
+  width: inherit;
+}
+
+.photos-wrapper {
+  background-color: #FFF8E8;
+  padding: 1em;
+}
+
+.photo {  
+  color: #FFF8E8;
+  word-wrap: break-word;
+  margin: 1em;
+}
+
+.photo:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+  bottom: 0.33vh;
+  transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1)
+}
+
+.add-photo {
+  color: #584B53;
+  margin: 1em;
+  word-wrap: break-word;
+  cursor: pointer;
+  border: 1px solid #584B53;
+  text-align: center;
+}
+
+.add-photo:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+  bottom: 0.33vh;
+  transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1)
+}
+
+.center-me {
+  padding-top: 5vh;
+  padding-bottom: 5vh;  
+  padding-left: 0;
+  padding-right: 0;
+}

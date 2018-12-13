@@ -95,11 +95,12 @@ body {
 }
 
 .add-album {
-  background-color: #584B53;
-  color: #E4BB97;
+  color: #584B53;
   margin: 1em;
   word-wrap: break-word;
   cursor: pointer;
+  border: 1px solid #584B53;
+  text-align: center;
 }
 
 .add-album:hover {
@@ -109,5 +110,8 @@ body {
 }
 
 .center-me {
-  padding-top: 10vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;  
+  padding-left: 0;
+  padding-right: 0;
 }
