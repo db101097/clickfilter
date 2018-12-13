@@ -85,4 +85,29 @@ body {
   background-color: #E4BB97;
   color: #FFF8E8;
   margin: 1em;
+  word-wrap: break-word;
+}
+
+.single-album:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+  bottom: 0.33vh;
+  transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1)
+}
+
+.add-album {
+  background-color: #584B53;
+  color: #E4BB97;
+  margin: 1em;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.add-album:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+  bottom: 0.33vh;
+  transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1)
+}
+
+.center-me {
+  padding-top: 10vh;
 }
