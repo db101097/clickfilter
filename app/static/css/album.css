@@ -82,9 +82,16 @@ body {
 }
 
 .photo {  
+  background-color: #584B53;
   color: #FFF8E8;
   word-wrap: break-word;
   margin: 1em;
+  padding: 0;
+  padding-left: 0;
+}
+
+.p-bot {
+  margin-bottom: 0;
 }
 
 .photo:hover {
