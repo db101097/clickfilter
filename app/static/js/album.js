@@ -7,3 +7,7 @@ $('#closeDrawer').click(function() {
     console.log("drawer closed")
     document.getElementById("mySidenav").style.width = "0";
 });
+
+$('#addNewPhoto').click(function() {
+    console.log("Implement addNewPhoto")
+});
