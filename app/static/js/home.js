@@ -13,7 +13,19 @@ $('#login').on('show.bs.modal', function (event) {
     modal.find('.modal-title').text('Adding a new album..')
 })
 
+$('#login-form').submit(function() {
+    var username = $("#username-l").val()
+    var password = $("#password-l").val()
+    console.log("Logging login-form\n","username:", username, "password:", password)
+});
+
 $('#signup').on('show.bs.modal', function (event) {
     var modal = $(this)
     modal.find('.modal-title').text('Adding a new album..')
-  })
+})
+
+$('#signup-form').submit(function() {
+    var username = $("#username-s").val()
+    var password = $("#password-s").val()
+    console.log("Logging signup-form\n","username:", username, "password:", password)
+});

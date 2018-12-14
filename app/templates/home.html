@@ -42,8 +42,8 @@
                 <a class="nav-item nav-link" href="#">probably</a>
             </div>
             <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
-                    <a class="nav-item nav-link" href="#" id="signup" data-toggle="modal" data-target="#signupModal">Signup</a>
+                    <a class="nav-item nav-link" href="#" id="login" data-toggle="modal" data-target="#loginModal">Log In</a>
+                    <a class="nav-item nav-link" href="#" id="signup" data-toggle="modal" data-target="#signupModal">Sign Up</a>
                 </div>
     </nav>
     </div>
@@ -161,19 +161,27 @@
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">This gets replaced in *.js</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h1>Fill the body with some way of adding a new album.</h1>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add Photo</button>
-            </div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="username" class="col-form-label">Username</label>
+                            <input type="text" class="form-control" id="username-l" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-form-label">Password</label>
+                            <input type="password" class="form-control" id="password-l" required>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="loginbtn">Log In</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -181,19 +189,27 @@
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="signupModalLabel">This gets replaced in *.js</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h1>Fill the body with some way of adding a new album.</h1>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add Photo</button>
-            </div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="username" class="col-form-label">Username</label>
+                            <input type="text" class="form-control" id="username-s" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-form-label">Password</label>
+                            <input type="password" class="form-control" id="password-s" required>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="signupbtn">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
