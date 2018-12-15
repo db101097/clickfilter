@@ -157,3 +157,25 @@ body {
   background-color: #FFF8E8;
   color: #E4BB97;
 }
+
+.tooltip > .tooltip-inner {
+  background-color: #9D5C63; 
+  color: #FFF8E8; 
+  border: 1px solid #000;
+  padding: 0.5em;
+  font-size: 14px;
+  min-width: 60vh;
+}
+
+.tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-bottom .arrow::before {
+  border-top-color: #9D5C63;
+}
+
+.tooltip.show {
+  opacity: 1 !important;
+} 
+
+.progress {
+  visibility: hidden;
+  padding: 1em;
+}

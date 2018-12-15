@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
@@ -167,14 +168,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="login-form">
+                    <form id="login-form" class="needs-validation" novalidate>
                         <div class="form-group">
-                            <label for="username" class="col-form-label">Username</label>
+                            <label for="username" class="col-form-label">Username:</label>
                             <input type="text" class="form-control" id="username-l" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please enter a valid username.
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-form-label">Password</label>
-                            <input type="password" class="form-control" id="password-l" required>
+                            <label for="password" class="col-form-label">Password:</label>
+                            <input type="password" class="form-control" id="password-l"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,20}"
+                                required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please check your password input and try again.
+                            </div>
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -195,14 +210,48 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="signup-form">
+                    <form id="signup-form" class="needs-validation" novalidate>
                         <div class="form-group">
-                            <label for="username" class="col-form-label">Username</label>
+                            <label for="username" class="col-form-label">Username:</label>
                             <input type="text" class="form-control" id="username-s" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please enter a valid username.
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-form-label">Password</label>
-                            <input type="password" class="form-control" id="password-s" required>
+                            <label for="password" class="col-form-label">Password:</label>
+                            <span class="cf-tooltip" 
+                            data-toggle="tooltip" 
+                            data-placement="bottom" 
+                            data-trigger="focus"
+                            data-html="true"
+                            title="<h6>Strong Password Rules</h6>
+                            <ul class=list-unstyled>
+                                <li>Password must be at least 8-20 characters in length.</li>
+                                <li>a minimum of 1 lower case letter [a-z] and</li>
+                                <li>a minimum of 1 upper case letter [A-Z] and</li>
+                                <li>a minimum of 1 numeric character [0-9] and</li>
+                                <li>a minimum of 1 special character: #?!@$%^&*-</li>
+                            </ul>">
+                                <input type="password" 
+                                class="form-control" 
+                                id="password-s"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-]).{8,20}"
+                                required>
+                                <div class="progress" id="password-strength">
+                                    <div class="progress-bar password-strength" id="pw-strength-feedback"
+                                    role="progressbar" style="width: 100%" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100">Password Strength</div>
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please follow the Strong Password Rules.
+                                </div>
+                            </span>
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -49,6 +49,11 @@ def photomode():
     ]
     return render_template('photomode.html', filters=filters)
 
+@app.route('/login', methods=['POST'])
+def login():
+    if request.method == 'POST':
+        print(request.form['name'], '\n', request.form['state'], '\n')
+
 
 @app.route('/filterimg', methods=['GET', 'POST'])
 def filterimg():
