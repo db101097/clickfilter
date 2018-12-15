@@ -32,6 +32,7 @@ def profile():
 def album():
     return render_template('album.html')
 
+
 # route for photomode
 @app.route('/photomode')
 def photomode():
@@ -48,6 +49,19 @@ def photomode():
         'face_blur',
     ]
     return render_template('photomode.html', filters=filters)
+
+
+@app.route('/photomode/save', methods=['POST'])
+def savephoto():
+    if request.method == 'POST':
+        title = request.form['title']
+    return title
+
+
+
+@app.router('/videomode')
+def videomode():
+    return render_template('videomode.html')
 
 
 @app.route('/login', methods=['POST'])
