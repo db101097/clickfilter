@@ -49,10 +49,19 @@ def photomode():
     ]
     return render_template('photomode.html', filters=filters)
 
+
 @app.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
-        print(request.form['name'], '\n', request.form['state'], '\n')
+        print(request.form['username'], request.form['password'], '\n')
+    return 'Logged in'
+
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    if request.method == 'POST':
+        print(request.form['username'], request.form['password'])
+    return 'Signed up'
 
 
 @app.route('/filterimg', methods=['GET', 'POST'])

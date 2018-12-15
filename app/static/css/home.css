@@ -179,3 +179,7 @@ body {
   visibility: hidden;
   padding: 1em;
 }
+
+.btn-cf-primary{
+  background-color: #E4BB97;
+}

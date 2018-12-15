@@ -109,9 +109,29 @@ $('#password-s').keyup(function (event) {
 })
 
 $('#login-form').submit(function() {
-    var username = $("#username-l").val()
-    var password = $("#password-l").val()
-    console.log("Logging login-form\n","username:", username, "password:", password)
+    var login = document.getElementById('login-form')
+    if(login.checkValidity() === false){
+        console.log("FALSE")
+    } else {
+        var username = $("#username-l").val()
+        var password = $("#password-l").val()
+        console.log("Logging login-form\n","username:", username, "password:", password)
+        $.ajax({
+            url : '/login',
+            type: 'POST',
+            cache: false,
+            data: {
+                username: username,
+                password: password
+            },
+            success:(data)=>{
+                console.log(data)
+            },
+            error:function(){
+                console.log("Error.")
+            }
+        })
+    }
 });
 
 $('#signup-form').submit(function() {
@@ -122,5 +142,20 @@ $('#signup-form').submit(function() {
         var username = $("#username-s").val()
         var password = $("#password-s").val()
         console.log("Logging signup-form\n","username:", username, "password:", password)
+        $.ajax({
+            url : '/signup',
+            type: 'POST',
+            cache: false,
+            data: {
+                username: username,
+                password: password
+            },
+            success:(data)=>{
+                console.log(data)
+            },
+            error:function(){
+                console.log("Error.")
+            }
+        })
     }
 });
