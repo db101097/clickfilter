@@ -16,6 +16,7 @@ app/__pycache__/*.cpython-36.pyc
 # images
 *.png
 *.jpeg
+.env
 
 # misc
 venv/
