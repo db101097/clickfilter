@@ -79,6 +79,7 @@ body {
 .albumwrapper {
   background-color: #FFF8E8;
   padding: 1em;
+  min-height: 100%;
 }
 
 .single-album {
@@ -86,6 +87,8 @@ body {
   color: #FFF8E8;
   margin: 1em;
   word-wrap: break-word;
+  padding: 0;
+  padding-left: 0;
 }
 
 .single-album:hover {
@@ -110,8 +113,6 @@ body {
 }
 
 .center-me {
-  padding-top: 5vh;
-  padding-bottom: 5vh;  
   padding-left: 0;
   padding-right: 0;
 }
