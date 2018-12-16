@@ -1,5 +1,8 @@
  # routes.py
 import base64
+import cloudinary
+import os
+import cloudinary.uploader
 import random
 import re
 import PIL
@@ -18,6 +21,16 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if __name__ == "__main__":
     app.run(debug=True)
+
+BASEDIR = os.path.abspath(os.path.dirname(__file__))
+
+cloudinary.config(
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.getenv('CLOUDINARY_API_KEY'),
+    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
+    cloudinary_url=os.getenv('CLOUDINARY_URL'),
+)
+
 
 @app.route('/')
 @app.route('/home')
@@ -51,15 +64,13 @@ def photomode():
     return render_template('photomode.html', filters=filters)
 
 
-@app.route('/photomode/save', methods=['POST'])
+@app.route('/photomode/save')
 def savephoto():
-    if request.method == 'POST':
-        title = request.form['title']
-    return title
+    img_up = cloudinary.uploader.upload("testselfie.jpg", public_id="title")
+    return jsonify(img_up)
 
 
-
-@app.router('/videomode')
+@app.route('/videomode')
 def videomode():
     return render_template('videomode.html')
 
