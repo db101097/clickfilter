@@ -46,7 +46,7 @@ def profile():
 @app.route('/album/<title>')
 def album(title):
     print(title)
-    return render_template('album.html')
+    return render_template('album.html', title=title)
 
 
 # route for photomode

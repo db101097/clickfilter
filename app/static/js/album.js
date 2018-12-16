@@ -11,8 +11,3 @@ $('#closeDrawer').click(function() {
 $('#addNewPhoto').click(function() {
     console.log("Implement addNewPhoto")
 });
-
-$('#photoModal').on('show.bs.modal', function (event) {
-    var modal = $(this)
-    modal.find('.modal-title').text('Adding a photo..')
-  })

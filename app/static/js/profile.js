@@ -15,4 +15,10 @@ $('#addNewAlbum').click(function() {
 $('#albumModal').on('show.bs.modal', function (event) {
     var modal = $(this)
     modal.find('.modal-title').text('Adding a new album..')
-  })
+});
+
+$('.single-album').click(function() {
+    var album = $(this)
+    var album_url = "/album/" + album.prop("innerText");
+    window.location.href = album_url;
+})
