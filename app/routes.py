@@ -37,12 +37,15 @@ cloudinary.config(
 def home():
     return render_template('home.html')
 
+
 @app.route('/profile')
 def profile():
     return render_template('profile.html')
 
-@app.route('/album')
-def album():
+
+@app.route('/album/<title>')
+def album(title):
+    print(title)
     return render_template('album.html')
 
 
