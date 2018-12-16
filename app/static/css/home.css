@@ -80,6 +80,18 @@ body {
   width: 100%;
 }
 
+@media screen and (max-device-width: 1024px){
+  .bgone, .catselfie_a, .catselfie_b, .catselfie_c,
+  .catselfie_d, .catselfie_a_full {
+    position: relative;
+    background-attachment: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+  }
+}
+
 .bgone {
   background-image: url('/static/img/pug.jpg');
   min-height: 100%;
