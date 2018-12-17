@@ -24,31 +24,31 @@
 </head>
 <body>
     <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" id="closeDrawer">
-                <i class="fas fa-bars"></i>
-            </a>
-            <a>Profile Name</a>
-            <a href="/profile">Albums</a>
-            <a href="/photomode">Photomode</a>
-            <a href="/videomode">Videomode</a>
-            </div>
+        <a href="javascript:void(0)" class="closebtn" id="closeDrawer">
+            <i class="fas fa-bars"></i>
+        </a>
+        <h3 class="nav-name">{{username}}</h3>
+        <a href="/profile">Albums</a>
+        <a href="/photomode">Photomode</a>
+        <a href="/videomode">Videomode</a>
+        </div>
     <nav class="navbar navbar-dark navbar-expand-lg bg-clickfilter">
-            <a href="#" class="navbar-brand" id="openDrawer">
-                <i class="fas fa-bars" style="font-size:36px;"></i>
-            </a>
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Bootstrap<span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Template</a>
-                <a class="nav-item nav-link" href="#">probably</a>
-                <a class="nav-item nav-link disabled" href="#">no navbar on this page?</a>
-            </div>
+        <a href="#" class="navbar-brand" id="openDrawer">
+            <i class="fas fa-bars" style="font-size:36px;"></i>
+        </a>
+        <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link active" href="#">ClickFilters<span class="sr-only">(current)</span></a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/logout">Logout</a>
+        </div>
     </nav>
     </div>
 
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center profile-header">
-                <h1 class="display-3">Username</h1>
+                <h1 class="display-3">{{username}}</h1>
             </div>
         </div>
     </div>

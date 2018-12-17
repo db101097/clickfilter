@@ -125,10 +125,11 @@ $('#login-form').submit(function() {
                 password: password
             },
             success:(data)=>{
-                console.log(data)
+                window.location.href = '/profile';
             },
             error:function(){
                 console.log("Error.")
+                console.alert("HELLO?")
             }
         })
     }
@@ -151,9 +152,11 @@ $('#signup-form').submit(function() {
                 password: password
             },
             success:(data)=>{
-                console.log(data)
+                alert("signed up!")
+                window.location.href = '/profile';
             },
             error:function(){
+                alert("NOT signed up!")
                 console.log("Error.")
             }
         })

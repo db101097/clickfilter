@@ -6,23 +6,57 @@ import cloudinary.uploader
 import random
 import re
 import PIL
-from flask import render_template, jsonify, request, send_file, make_response
+from flask import render_template, jsonify, request, send_file, make_response, session, redirect, url_for
 from app import app
 from PIL import Image, ImageFilter, ImageEnhance
 from io import BytesIO
 from .clickfilter import ClickFilter
 import cv2
 import numpy as np
+import psycopg2
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # to be used if we need to save files to server.
 UPLOAD_FOLDER = 'app/static/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if __name__ == "__main__":
     app.run(debug=True)
 
-BASEDIR = os.path.abspath(os.path.dirname(__file__))
+app.secret_key = os.urandom(24)
+app.config['SQLALCHEMY_DATABASE_URI']=os.getenv('DATABASE_URL')
+app.config['SQLAlCHEMY_TRACK_MODIFICATIONS']=False 
+db = SQLAlchemy(app)
+
+
+class user(db.Model):
+    __tablename__= 'User'
+    username =db.Column(db.String(20),primary_key=True,unique=True,nullable=False)
+    password_hash=db.Column(db.String(1000),nullable=False)
+
+    def __init__(self,un,pw):
+        self.username=un
+        self.password_hash=pw
+
+
+class album(db.Model):
+    __tablename__='albums'
+    album_id= db.Column(db.Integer(),unique=True,primary_key=True)
+    username =db.Column(db.String(20))
+    size = db.Column(db.Integer())
+    name= db.Column(db.String(20))
+
+
+class photo(db.Model):
+    __tablename__='photo'
+    album_id= db.Column(db.Integer(),primary_key=True)
+    photo_str=db.Column(db.String(1000))
+
+    db.create_all()
+
 
 cloudinary.config(
     cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
@@ -33,14 +67,18 @@ cloudinary.config(
 
 
 @app.route('/')
-@app.route('/home')
 def home():
+    if 'username' in session:
+        print('user in session')
+        session['logged_in'] = True
+        return redirect(url_for('profile'))
+    print('user NOT in session')
     return render_template('home.html')
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html')
+    return render_template('profile.html', username=session['username'])
 
 
 @app.route('/album/<title>')
@@ -81,15 +119,39 @@ def videomode():
 @app.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
-        print(request.form['username'], request.form['password'], '\n')
-    return 'Logged in'
+        un=str(request.form['username'])
+        pw = str(request.form['password'])
+        dbu= user.query.filter_by(username=un).first()
+        if(check_password_hash(dbu.password_hash,pw)):
+            print('success')
+            session['username'] = request.form['username']
+            session['logged_in'] = True
+            print(session['username'])
+            return render_template('profile.html', username=session['username'])
+        else:
+            print('unrecognized username/password combination')
+            return 'unrecognized username/password combination'
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    session.pop('logged_in', None)
+    return redirect(url_for('home'))
 
 
 @app.route('/signup', methods=['POST'])
 def signup():
     if request.method == 'POST':
-        print(request.form['username'], request.form['password'])
-    return 'Signed up'
+        un=str(request.form['username'])
+        pw = generate_password_hash(str(request.form['password']))
+        new_user= user(un,pw)
+        db.session.add(new_user)
+        db.session.commit()
+        print('New user signed up.')
+        session['username'] = request.form['username']
+        print(session['username'])
+        return render_template('profile.html', username=session['username'])
 
 
 @app.route('/filterimg', methods=['GET', 'POST'])

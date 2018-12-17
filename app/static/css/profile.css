@@ -116,3 +116,11 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+
+.nav-name {
+  color: #E4BB97;
+  padding: 8px 8px 8px 32px;
+  display: block;
+  transition: 0.3s;
+  letter-spacing: 2px;
+}

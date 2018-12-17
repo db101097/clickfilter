@@ -28,7 +28,7 @@
             <a href="javascript:void(0)" class="closebtn" id="closeDrawer">
                 <i class="fas fa-bars"></i>
             </a>
-            <a>Profile Name</a>
+            <a>{{ 'username' if session['username'] else 'Not logged in.' }}</a>
             <a href="/profile">Albums</a>
             <a href="/photomode">Photomode</a>
             <a href="/videomode">Videomode</a>
