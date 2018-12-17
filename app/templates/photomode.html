@@ -121,6 +121,29 @@
   </script>
     <script src="{{url_for('static', filename='js/three.min.js')}}"></script>
     </head>
+        <!-- nav bar -->
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" id="main-title" href="#">ClickFilter</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">VideoMode</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">PhotoMode</a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
+<br>
+        <!--nav bar -->
+  <!--
         <nav class="navbar navbar-inverse "data-spy="affix" data-offset-top="197">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -138,6 +161,7 @@
         </ul>
       </div>
     </nav>
+ -->
     <body>
 
 
@@ -216,106 +240,77 @@
                 {% endfor %}
               </div>
             </div>
-
-
+          
+            
     </div>
             </div>
         </div> 
+ <div class="row saving-photos">
+      <div class="col-sm-4" ></div>
+      <div class="col-sm-4" ><button type="save" value="Save">Save</button></div>
+      <div class="col-sm-4" ></div>
+    </div>
+    <br>
 
     <br><br>
-             <!------------------------------------------------------Webcam Section--------------------------->
-       <img src="{{ url_for('static', filename='thinking.ico') }}" id="thinkfilter" width="0" height="0">
-       <img src="{{ url_for('static', filename='sg.ico') }}" id="shades" width="0" height="0">
-       <img src="{{ url_for('static', filename='lear.png') }}" id="lear" width="0" height="0">
-       <img src="{{ url_for('static', filename='rear.png') }}" id="rear" width="0" height="0">
-       <img src="{{ url_for('static', filename='scd.png') }}" id="nose" width="0" height="0">
-       <img src="{{ url_for('static', filename='tongue.png') }}" id="tongue" width="0" height="0">
-       <img src="{{ url_for('static', filename='rose.png') }}" id="rose" width="0" height="0">
-       <img src="{{ url_for('static', filename='nff.png') }}" id="text" width="0" height="0">
+      
+ 
 
-      <div id="webcam-nav" class="webcam-section js--wp-3">
-        <div class="row">
-          <div class="col-12 text-center">
-            <h2 class="webcam-name">Smile Big!</h2>
-          </div>
-        </div>
-          <div class="row">
-              <div class="col text-center">
-                  <button type="button" class="btn btn-primary" id="camFiltOne">BLACKHOLE</button>
-                  <button type="button" class="btn btn-primary" id="camFiltTwo">INVERT</button>
-                  <button type="button" class="btn btn-primary" id="camFiltThree">COLORS</button>
-                  <button type="button" class="btn btn-primary" id="camFiltSnap">THINK</button>
-                  <button type="button" class="btn btn-primary" id="camFiltDog">DOGGY</button>
-                  <button type="button" class="btn btn-primary" id="camFiltCrown">CROWN</button>
-                  <button type="button" class="btn btn-primary" id="camFiltShades">SHADES</button>
-              </div>
-          </div>
-          <div id="container-fluid">
-            <div class="row">
-              <div class="col-12 justify-content-center" id="newcam">
-                <video id="webcam"></video>
-                <canvas id="canvas" class="camvas"></canvas>
-                <canvas id="je" class="camvas"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4">
+
+
+
+    <hr>
+
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Register for free</h5>
+      </li>
+      <li class="list-inline-item">
+        <a href="#!" class="btn btn-danger btn-rounded">Sign up!</a>
+      </li>
+    </ul>
+
+    <hr>
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a class="btn-floating btn-fb mx-1">
+          <i class="fa fa-facebook"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-tw mx-1">
+          <i class="fa fa-twitter"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-gplus mx-1">
+          <i class="fa fa-google-plus"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-li mx-1">
+          <i class="fa fa-linkedin"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-li mx-1">
+          <i class="fa fa-instagram"> </i>
+        </a>
+    </ul>
+
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> Clickfilters LLC</a>
     </div>
-  </div>
 
-        <!-- Footer -->
-    <footer class="page-footer font-small cyan darken-3">
 
-        <!-- Footer Elements -->
-        <div  id="socialmedia-nav" class="container">
-
-          <!-- Grid row-->
-          <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-12 py-5">
-              <div class="mb-5 flex-center icons-footer">
-
-                <a class="fb-ic">
-                  <i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                </a>
-                <!-- Twitter -->
-                <a class="tw-ic">
-                  <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                </a>
-                <!-- Google +-->
-                <a class="gplus-ic">
-                  <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                </a>
-                <!--Linkedin -->
-                <a class="li-ic">
-                  <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                </a>
-                <!--Instagram-->
-                <a class="ins-ic">
-                  <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                </a>
-                <!--Pinterest-->
-                <a class="pin-ic">
-                  <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
-                </a>
-              </div>
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row-->
-
-        </div>
-        <!-- Footer Elements -->
-
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 ">
-          © 2018 Copyright:ClickFilterProductions
-        </div>
-        <!-- Copyright -->
-
-      </footer>
+</footer>
       <!-- Footer -->
       <script src="{{url_for('static', filename='js/photomode.js')}}"></script>
       <script src="{{url_for('static', filename='js/webcam.js')}}"></script>
