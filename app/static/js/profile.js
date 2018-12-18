@@ -22,3 +22,26 @@ $('.single-album').click(function() {
     var album_url = "/album/" + album.prop("innerText");
     window.location.href = album_url;
 })
+
+$('#album-form').submit(function(e) {
+    e.preventDefault();
+    var title = $("#album-title").val()
+    console.log(title)
+    $.ajax({
+        url : '/addalbum',
+        type: 'POST',
+        cache: false,
+        data: {
+            title: title
+        },
+        success:function(data){
+            alert(data)
+            $('#albumModal').modal('toggle');
+        },
+        error:function(){
+            // function param should be the error response generated
+            // by the backend.
+            console.log("Error.")
+        }
+    })
+})

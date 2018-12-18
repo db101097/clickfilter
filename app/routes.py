@@ -117,6 +117,26 @@ def album(title):
     return render_template('album.html', title=title, username=session['username'], photos=photos)
 
 
+@app.route('/addalbum', methods=['POST'])
+def addalbum():
+    if request.method == 'POST':
+        title = request.form['title']
+        # CREATE THE REQUESTED ALBUM
+        resp = "new album has title: " + title
+        return resp
+
+
+@app.route('/addphoto', methods=['POST'])
+def addphoto():
+    if request.method == 'POST':
+        album_title = "GET ALBUM TITLE FROM DB"
+        photo_title = request.form['photo_title']
+
+        # ADD THE PHOTO TO THE REQUESTED ALBUM
+        resp = "new photo with title: " + photo_title + " being added to album: " + album_title
+        return resp
+
+
 # route for photomode
 @app.route('/photomode')
 def photomode():

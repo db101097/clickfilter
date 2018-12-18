@@ -1,10 +1,10 @@
 $('#openDrawer').click(function() {
-    console.log("drawer opened")
+    //console.log("drawer opened")
     document.getElementById("mySidenav").style.width = "250px";
 });
 
 $('#closeDrawer').click(function() {
-    console.log("drawer closed")
+    //console.log("drawer closed")
     document.getElementById("mySidenav").style.width = "0";
 });
 
@@ -111,11 +111,11 @@ $('#password-s').keyup(function (event) {
 $('#login-form').submit(function() {
     var login = document.getElementById('login-form')
     if(login.checkValidity() === false){
-        console.log("FALSE")
+        console.warn("INVALID INPUT")
     } else {
         var username = $("#username-l").val()
         var password = $("#password-l").val()
-        console.log("Logging login-form\n","username:", username, "password:", password)
+        // console.log("Logging login-form\n","username:", username, "password:", password)
         $.ajax({
             url : '/login',
             type: 'POST',
@@ -138,11 +138,11 @@ $('#login-form').submit(function() {
 $('#signup-form').submit(function() {
     var signup = document.getElementById('signup-form')
     if(signup.checkValidity() === false){
-        console.log("FALSE")
+        console.warn("INVALID INPUT")
     } else {
         var username = $("#username-s").val()
         var password = $("#password-s").val()
-        console.log("Logging signup-form\n","username:", username, "password:", password)
+        // console.log("Logging signup-form\n","username:", username, "password:", password)
         $.ajax({
             url : '/signup',
             type: 'POST',
@@ -157,7 +157,7 @@ $('#signup-form').submit(function() {
             },
             error:function(){
                 alert("NOT signed up!")
-                console.log("Error.")
+                console.warn("Error.")
             }
         })
     }

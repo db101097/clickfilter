@@ -79,19 +79,24 @@
     <div class="modal fade" id="albumModal" tabindex="-1" role="dialog" aria-labelledby="albumModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="albumModalLabel">This gets replaced in *.js</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h1>Fill the body with some way of adding a new album.</h1>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add Photo</button>
-            </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="albumModalLabel">Adding a New Album</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="album-form" class="needs-validation">
+                        <div class="form-group">
+                            <label for="album-title" class="col-form-label">Album Title:</label>
+                            <input type="text" class="form-control" id="album-title" required>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="add-album">Add Album</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
