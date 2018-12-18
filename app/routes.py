@@ -49,6 +49,11 @@ class album(db.Model):
     size = db.Column(db.Integer())
     name= db.Column(db.String(20))
 
+    def __init__(self,un,size,name):
+        self.username = un
+        self.size = size
+        self.name = name
+
 
 class photo(db.Model):
     __tablename__='photo'
@@ -78,7 +83,10 @@ def home():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html', username=session['username'])
+    if 'logged_in' not in session:
+        print("A user is NOT logged in")
+        return redirect(url_for('home'))
+    return render_template('profile.html', username=session['username'], dog='dog')
 
 
 @app.route('/album/<title>')
@@ -90,7 +98,7 @@ def album(title):
 # route for photomode
 @app.route('/photomode')
 def photomode():
-	# filters to be passed for HTML templating.
+    # filters to be passed for HTML templating.
     filters = [
         'contour',
         'emboss',
@@ -105,10 +113,15 @@ def photomode():
     return render_template('photomode.html', filters=filters)
 
 
-@app.route('/photomode/save')
+@app.route('/photomode/save', methods=['POST'])
 def savephoto():
-    img_up = cloudinary.uploader.upload("testselfie.jpg", public_id="title")
-    return jsonify(img_up)
+    if request.method == 'POST':
+        img = request.form['file']
+        title = request.form['title']
+        img_up = cloudinary.uploader.upload(img, resource_type="auto", public_id=title)
+        # THIS IS THE URL WE ARE SAVING TO THE USERS DEFAULT "MY PHOTOS" ALBUM
+        # print(img_up['url'])
+        return "success"
 
 
 @app.route('/videomode')
@@ -148,9 +161,15 @@ def signup():
         new_user= user(un,pw)
         db.session.add(new_user)
         db.session.commit()
+
         print('New user signed up.')
         session['username'] = request.form['username']
         print(session['username'])
+
+        default_album = album(un,size,"My Photos")
+        db.session.add(default_album)
+        deb.session.commit()
+        print('album added')
         return render_template('profile.html', username=session['username'])
 
 

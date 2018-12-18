@@ -47,6 +47,31 @@ $('#myCarousel').on('slid.bs.carousel', function (e) {
     onSubmit();
 })
 
+$('#photo-form').submit(function(e) {
+    e.preventDefault();
+    var file = $('#myimage').attr('src')
+    var title = $("#photo-title").val()
+    console.log(file)
+    $.ajax({
+        url : '/photomode/save',
+        type: 'POST',
+        cache: false,
+        data: {
+            file: file,
+            title: title
+        },
+        success:function(data){
+            alert("Photo Saved!")
+            $('#savePhotoModal').modal('toggle');
+        },
+        error:function(){
+            // function param should be the error response generated
+            // by the backend.
+            console.log("Error.")
+        }
+    })
+})
+
 // Takes user selection from radio buttons as event.
 // passed event is the selected filter.
 function onSubmit() {
