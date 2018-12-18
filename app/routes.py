@@ -42,26 +42,31 @@ class user(db.Model):
         self.password_hash=pw
 
 
-class album(db.Model):
-    __tablename__='albums'
-    album_id= db.Column(db.Integer(),unique=True,primary_key=True)
-    username =db.Column(db.String(20))
-    size = db.Column(db.Integer())
-    name= db.Column(db.String(20))
+class useralbum(db.Model):
+    __tablename__ = 'Useralbum'
+    album_id = db.Column(db.Integer(), unique=True, primary_key=True)
+    username = db.Column(db.String(20), nullable=False)
+    name = db.Column(db.String(20))
 
-    def __init__(self,un,size,name):
+    def __init__(self,un,name):
         self.username = un
-        self.size = size
         self.name = name
 
 
-class photo(db.Model):
-    __tablename__='photo'
-    album_id= db.Column(db.Integer(),primary_key=True)
-    photo_str=db.Column(db.String(1000))
+class uphoto(db.Model):
+    __tablename__ = 'uphoto'
+    photo_id = db.Column(db.Integer(), unique=True, primary_key=True)
+    photo_name = db.Column(db.String(30))
+    album_id = db.Column(db.Integer())
+    photo_url = db.Column(db.String(1000))
 
-    db.create_all()
+    def __init__(self, name, album_id, url):
+        self.photo_name = name
+        self.album_id = album_id
+        self.photo_url = url
 
+
+db.create_all()
 
 cloudinary.config(
     cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
@@ -81,59 +86,85 @@ def home():
     return render_template('home.html')
 
 
+@app.route('/test')
+def test():
+    userlist = user.query.all()
+    albumlist = useralbum.query.filter_by(username=session['username'])
+    album_rows = albumlist.all()
+    for row in album_rows:
+        print(row.name)
+    photolist = uphoto.query.all()
+    for photo in photolist:
+        print(photo.photo_id, photo.album_id, photo.photo_name, photo.photo_url)
+    #photolist = photo.query.all()
+    print('e', album_rows)
+    return "Okay"
+
+
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     if 'logged_in' not in session:
         print("A user is NOT logged in")
         return redirect(url_for('home'))
     # THIS IS AN EXAMPLE
-    albums = [
-        {
-            'name': 'album_one'
-        },
-        {
-            'name': 'album_two'
-        },
-    ]
+    albums = useralbum.query.filter_by(username=session['username'])
     return render_template('profile.html', username=session['username'], albums=albums)
 
 
-@app.route('/album/<title>')
-def album(title):
-    print(title)
+@app.route('/album/<album_id>')
+def album(album_id):
     if 'logged_in' not in session:
         print("A user is NOT logged in")
         return redirect(url_for('home'))
-    
-    # THIS IS AN EXAMPLE
-    photos = [
-        {
-            'title': 'photo_one'
-        },
-        {
-            'title': 'photo_two'
-        },
-    ]
-    return render_template('album.html', title=title, username=session['username'], photos=photos)
+
+    title = useralbum.query.filter_by(album_id=album_id).first()
+
+    myphotos_id = useralbum.query.filter_by(name="My Photos", username=session['username']).first()
+    myphotos = uphoto.query.filter_by(album_id=myphotos_id.album_id)
+    for x in myphotos:
+        print(x.photo_name)
+
+    photos = uphoto.query.filter_by(album_id=album_id).all()
+    return render_template('album.html', title=title, username=session['username'], photos=photos, myphotos=myphotos)
 
 
 @app.route('/addalbum', methods=['POST'])
 def addalbum():
     if request.method == 'POST':
         title = request.form['title']
+        username = session['username']
+        new_album = useralbum(username, title)
+        db.session.add(new_album)
+        db.session.commit()
+        print('new album added')
         # CREATE THE REQUESTED ALBUM
-        resp = "new album has title: " + title
+        resp = "New Album Added!"
         return resp
 
 
 @app.route('/addphoto', methods=['POST'])
 def addphoto():
     if request.method == 'POST':
-        album_title = "GET ALBUM TITLE FROM DB"
         photo_title = request.form['photo_title']
+        album_id = request.form['album_id']
+        username = session['username']
 
-        # ADD THE PHOTO TO THE REQUESTED ALBUM
-        resp = "new photo with title: " + photo_title + " being added to album: " + album_title
+        photo = uphoto.query.filter_by(photo_name=photo_title).first()
+        print(photo.photo_id, photo.album_id, photo.photo_name, photo.photo_url)
+
+        new_photo = uphoto(photo.photo_name, album_id, photo.photo_url)
+        db.session.add(new_photo)
+        db.session.commit()
+
+        '''
+        new_photo = uphoto(title, default_album.album_id, img_up['url'])
+        
+        
+        db.session.add(new_album)
+        db.session.commit()
+        '''
+
+        resp = "Okay it seems to work?"
         return resp
 
 
@@ -161,8 +192,17 @@ def savephoto():
         img = request.form['file']
         title = request.form['title']
         img_up = cloudinary.uploader.upload(img, resource_type="auto", public_id=title)
-        # THIS IS THE URL WE ARE SAVING TO THE USERS DEFAULT "MY PHOTOS" ALBUM ==== img_up['url']
-        # print(img_up['url'])
+
+        username = session['username']
+
+        default_album = useralbum.query.filter_by(name="My Photos", username=username).first()
+        print(default_album.album_id)
+
+        new_photo = uphoto(title, default_album.album_id, img_up['url'])
+
+        db.session.add(new_photo)
+        db.session.commit()
+        print('it worked')
         return "success"
 
 
@@ -202,18 +242,15 @@ def signup():
         pw = generate_password_hash(str(request.form['password']))
         new_user= user(un,pw)
         db.session.add(new_user)
-        db.session.commit()
 
         print('New user signed up.')
         session['username'] = request.form['username']
         print(session['username'])
 
-        '''
-        default_album = album(un,size,"My Photos")
+        default_album = useralbum(un, "My Photos")
         db.session.add(default_album)
-        deb.session.commit()
+        db.session.commit()
         print('album added')
-        '''
 
         # HANDLE ERRORS?
         return render_template('profile.html', username=session['username'])

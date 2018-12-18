@@ -62,7 +62,7 @@
 
         <div class="row no-gutters justify-content-center">
             {% for album in albums %}  
-            <div class="col-3 single-album text-center shadow-sm rounded">
+            <div class="col-3 single-album text-center shadow-sm rounded" name="{{album['album_id']}}">
                 <img src="{{album['cover']}}" class="img-fluid">
                 <h3>{{album['name']}}</h3>
             </div> 

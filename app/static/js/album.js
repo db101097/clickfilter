@@ -21,6 +21,7 @@ $('.single-album').click(function() {
 $('.dropdown-item').click(function(e) {
     e.preventDefault();
     var photo_title = $(this)
+    var album_id = $('#album-title').attr("name")
     photo_title = photo_title.prop("innerText");
     console.log(photo_title)
     $.ajax({
@@ -28,7 +29,8 @@ $('.dropdown-item').click(function(e) {
         type: 'POST',
         cache: false,
         data: {
-            photo_title: photo_title
+            photo_title: photo_title,
+            album_id: album_id
         },
         success:function(data){
             alert(data)

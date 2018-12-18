@@ -56,15 +56,15 @@
     <div class="photos-wrapper">
         <div class="row">
             <div class="col text-center">
-                <h1 class="display-4" id="album-title">{{title}}</h1>
+                <h1 class="display-4" id="album-title" name="{{title.album_id}}">{{title.name}}</h1>
             </div>
         </div>
 
         <div class="row no-gutters justify-content-center">
             {% for photo in photos %}
             <div class="col-3 photo text-center shadow-sm rounded">
-                <img src="{{photo['url']}}" class="img-fluid">
-                <p class="lead p-bot">{{photo['title']}}</p>
+                <img src="{{photo['photo_url']}}" class="img-fluid">
+                <p class="lead p-bot">{{photo['photo_name']}}</p>
             </div>
             {% endfor %}     
             <div class="col-3 add-photo text-center shadow-sm rounded justify-content-center align-self-center">
@@ -80,7 +80,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="photoModalLabel">Adding photos to {{title}}</h5>
+                <h5 class="modal-title" id="photoModalLabel">Adding photos to {{title.name}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -92,8 +92,8 @@
                         My Photos
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {% for photo in photos %}
-                            <a class="dropdown-item .photo-url">{{photo.title}}</a>
+                        {% for myphoto in myphotos %}
+                            <a class="dropdown-item .photo-url">{{myphoto.photo_name}}</a>
                         {% endfor %}   
                     </div>
                 </div>

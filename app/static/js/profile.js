@@ -19,7 +19,7 @@ $('#albumModal').on('show.bs.modal', function (event) {
 
 $('.single-album').click(function() {
     var album = $(this)
-    var album_url = "/album/" + album.prop("innerText");
+    var album_url = "/album/" + album.attr("name");
     window.location.href = album_url;
 })
 
