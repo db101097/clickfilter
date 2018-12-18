@@ -35,6 +35,7 @@ $('.dropdown-item').click(function(e) {
         success:function(data){
             alert(data)
             $('#photoModal').modal('toggle');
+            location.reload();
         },
         error:function(){
             // function param should be the error response generated

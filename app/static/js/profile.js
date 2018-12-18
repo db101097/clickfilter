@@ -37,6 +37,7 @@ $('#album-form').submit(function(e) {
         success:function(data){
             alert(data)
             $('#albumModal').modal('toggle');
+            location.reload();
         },
         error:function(){
             // function param should be the error response generated

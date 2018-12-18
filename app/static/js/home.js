@@ -1,11 +1,13 @@
 $('#openDrawer').click(function() {
     //console.log("drawer opened")
     document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").style.boxShadow = "1px 2px 18px black";
 });
 
 $('#closeDrawer').click(function() {
     //console.log("drawer closed")
     document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").style.borderRight = "";
 });
 
 (function() {
@@ -108,7 +110,8 @@ $('#password-s').keyup(function (event) {
         }
 })
 
-$('#login-form').submit(function() {
+$('#login-form').submit(function(event) {
+    event.preventDefault()
     var login = document.getElementById('login-form')
     if(login.checkValidity() === false){
         console.warn("INVALID INPUT")
@@ -120,22 +123,26 @@ $('#login-form').submit(function() {
             url : '/login',
             type: 'POST',
             cache: false,
+            xhrFields: {
+                withCredentials: true
+                },
             data: {
                 username: username,
                 password: password
             },
             success:(data)=>{
-                window.location.href = '/';
+                console.log(data)
+                location.reload();
             },
             error:function(){
-                console.log("Error.")
-                console.alert("HELLO?")
+                alert("Invalid login credentials.")
             }
         })
     }
 });
 
 $('#signup-form').submit(function() {
+    event.preventDefault()
     var signup = document.getElementById('signup-form')
     if(signup.checkValidity() === false){
         console.warn("INVALID INPUT")
@@ -152,11 +159,11 @@ $('#signup-form').submit(function() {
                 password: password
             },
             success:(data)=>{
-                alert("signed up!")
-                window.location.href = '/profile';
+                alert(data)
+                location.reload();
             },
             error:function(){
-                alert("NOT signed up!")
+                alert("Error in sign up.")
                 console.warn("Error.")
             }
         })

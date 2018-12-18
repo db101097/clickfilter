@@ -89,7 +89,8 @@
                     <form id="album-form" class="needs-validation">
                         <div class="form-group">
                             <label for="album-title" class="col-form-label">Album Title:</label>
-                            <input type="text" class="form-control" id="album-title" required>
+                            <input type="text" class="form-control" id="album-title" maxlength="20" required>
+                            <small id="albumHelp" class="form-text text-muted">Album titles must not exceed 20 characters in length.</small>
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

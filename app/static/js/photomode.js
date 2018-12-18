@@ -64,9 +64,10 @@ $('#photo-form').submit(function(e) {
             alert("Photo Saved!")
             $('#savePhotoModal').modal('toggle');
         },
-        error:function(){
+        error:function(data){
             // function param should be the error response generated
             // by the backend.
+            alert(data.responseJSON.message)
             console.log("Error.")
         }
     })

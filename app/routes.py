@@ -6,7 +6,7 @@ import cloudinary.uploader
 import random
 import re
 import PIL
-from flask import render_template, jsonify, request, send_file, make_response, session, redirect, url_for
+from flask import render_template, jsonify, request, send_file, make_response, session, redirect, url_for, abort
 from app import app
 from PIL import Image, ImageFilter, ImageEnhance
 from io import BytesIO
@@ -83,7 +83,7 @@ def home():
         session['logged_in'] = True
         return redirect(url_for('profile'))
     print('user NOT in session')
-    return render_template('home.html')
+    return render_template('home.html', home=home)
 
 
 @app.route('/test')
@@ -104,7 +104,7 @@ def test():
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     if 'logged_in' not in session:
-        print("A user is NOT logged in")
+        print("User must log in to see their profile page")
         return redirect(url_for('home'))
     # THIS IS AN EXAMPLE
     albums = useralbum.query.filter_by(username=session['username'])
@@ -164,7 +164,7 @@ def addphoto():
         db.session.commit()
         '''
 
-        resp = "Okay it seems to work?"
+        resp = "New Photo Added!"
         return resp
 
 
@@ -188,9 +188,15 @@ def photomode():
 
 @app.route('/photomode/save', methods=['POST'])
 def savephoto():
-    if request.method == 'POST':
+    if 'logged_in' not in session:
+        print("A user is NOT logged in")
+        return abort(make_response(jsonify(message="User must log in to save photos!"), 401))
+    elif 'logged_in' in session and request.method == 'POST':
         img = request.form['file']
         title = request.form['title']
+        if img is None:
+            print("Missing required parameter - img")
+            return abort(make_response(jsonify(message="Missing required parameter - img"), 400))
         img_up = cloudinary.uploader.upload(img, resource_type="auto", public_id=title)
 
         username = session['username']
@@ -204,6 +210,8 @@ def savephoto():
         db.session.commit()
         print('it worked')
         return "success"
+    else:
+        return "Wow what the heck?"
 
 
 @app.route('/videomode')
@@ -221,11 +229,11 @@ def login():
             print('success')
             session['username'] = request.form['username']
             session['logged_in'] = True
-            print(session['username'])
-            return render_template('profile.html', username=session['username'])
+            print(session['username'], session['logged_in'])
+            return "Okay"
         else:
             print('unrecognized username/password combination')
-            return 'unrecognized username/password combination'
+            return "unrecognized username/password combination"
 
 
 @app.route('/logout')
@@ -253,7 +261,7 @@ def signup():
         print('album added')
 
         # HANDLE ERRORS?
-        return render_template('profile.html', username=session['username'])
+        return "Okay"
 
 
 @app.route('/filterimg', methods=['GET', 'POST'])
