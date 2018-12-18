@@ -149,7 +149,9 @@ def addphoto():
         album_id = request.form['album_id']
         username = session['username']
 
-        photo = uphoto.query.filter_by(photo_name=photo_title).first()
+        default_album = useralbum.query.filter_by(name="My Photos", username=username).first()
+
+        photo = uphoto.query.filter_by(photo_name=photo_title, album_id=default_album.album_id).first()
         print(photo.photo_id, photo.album_id, photo.photo_name, photo.photo_url)
 
         new_photo = uphoto(photo.photo_name, album_id, photo.photo_url)
@@ -197,7 +199,7 @@ def savephoto():
         if img is None:
             print("Missing required parameter - img")
             return abort(make_response(jsonify(message="Missing required parameter - img"), 400))
-        img_up = cloudinary.uploader.upload(img, resource_type="auto", public_id=title)
+        img_up = cloudinary.uploader.upload(img, resource_type="auto")
 
         username = session['username']
 
