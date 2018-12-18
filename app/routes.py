@@ -92,7 +92,10 @@ def profile():
 @app.route('/album/<title>')
 def album(title):
     print(title)
-    return render_template('album.html', title=title)
+    if 'logged_in' not in session:
+        print("A user is NOT logged in")
+        return redirect(url_for('home'))
+    return render_template('album.html', title=title, username=session['username'])
 
 
 # route for photomode
