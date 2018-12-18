@@ -169,10 +169,14 @@ def signup():
         session['username'] = request.form['username']
         print(session['username'])
 
+        '''
         default_album = album(un,size,"My Photos")
         db.session.add(default_album)
         deb.session.commit()
         print('album added')
+        '''
+
+        # HANDLE ERRORS?
         return render_template('profile.html', username=session['username'])
 
 
