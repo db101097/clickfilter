@@ -100,7 +100,7 @@ body {
 
 .catselfie_a {
   background-image: url('/static/img/catselfiea.jpg');
-  min-height: 60vh;
+  min-height: 80vh;
   opacity: 0.70;
 }
 
@@ -112,7 +112,7 @@ body {
 
 .catselfie_b {
   background-image: url('/static/img/catselfieb.png');
-  min-height: 40vh;
+  min-height: 80vh;
   opacity: 0.80;
 }
 
@@ -136,6 +136,18 @@ body {
   margin: 1em;
 }
 
+.caption_a_full {
+  top: 40%;
+}
+
+.caption_c{
+  top: 20%;
+}
+
+.caption_d{
+  top: 80%;
+}
+
 .caption_home {
   color: #E84F47;
   font-weight: 900;
@@ -150,24 +162,17 @@ body {
   padding: 0.5em;
 }
 
+.bg_bottom {
+  letter-spacing: 2px;
+  background-color: rgba(0,0,0,0.9);
+  color: white;
+  padding: 1em;
+}
+
 .paragraph {
-  color: red;
-  background-color: black;
+  color: #E84F47;
+  background-color: #000;
   padding: 1em;
-}
-
-.filterad_a {
-  padding: 1em;
-  position: relative;
-  background-color: #FFF8E8;
-  color: #E4BB97;
-}
-
-.filterad_b {
-  padding: .5em;
-  position: relative;
-  background-color: #FFF8E8;
-  color: #E4BB97;
 }
 
 .tooltip > .tooltip-inner {
@@ -190,4 +195,24 @@ body {
 .progress {
   visibility: hidden;
   padding: 1em;
+}
+
+.transparent-b {
+  mix-blend-mode: screen;
+  background-color: #fff;
+  background-size: cover;
+  color: #000
+}
+
+.transparent-b-alt {
+  background-color: #000;
+  background-size: cover;
+  color: #fff;
+}
+
+.transparent-v {
+  mix-blend-mode: screen;
+  background-color: #fff;
+  background-size: cover;
+  color: #000;
 }
