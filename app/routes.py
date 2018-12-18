@@ -86,7 +86,16 @@ def profile():
     if 'logged_in' not in session:
         print("A user is NOT logged in")
         return redirect(url_for('home'))
-    return render_template('profile.html', username=session['username'], dog='dog')
+    # THIS IS AN EXAMPLE
+    albums = [
+        {
+            'name': 'album_one'
+        },
+        {
+            'name': 'album_two'
+        },
+    ]
+    return render_template('profile.html', username=session['username'], albums=albums)
 
 
 @app.route('/album/<title>')
@@ -95,7 +104,17 @@ def album(title):
     if 'logged_in' not in session:
         print("A user is NOT logged in")
         return redirect(url_for('home'))
-    return render_template('album.html', title=title, username=session['username'])
+    
+    # THIS IS AN EXAMPLE
+    photos = [
+        {
+            'title': 'photo_one'
+        },
+        {
+            'title': 'photo_two'
+        },
+    ]
+    return render_template('album.html', title=title, username=session['username'], photos=photos)
 
 
 # route for photomode

@@ -125,7 +125,7 @@ $('#login-form').submit(function() {
                 password: password
             },
             success:(data)=>{
-                window.location.href = '/profile';
+                window.location.href = '/';
             },
             error:function(){
                 console.log("Error.")

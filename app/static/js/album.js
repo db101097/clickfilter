@@ -11,3 +11,9 @@ $('#closeDrawer').click(function() {
 $('#addNewPhoto').click(function() {
     console.log("Implement addNewPhoto")
 });
+
+$('.single-album').click(function() {
+    var photo = $(this)
+    var photo = photo.prop("innerText");
+    console.log(photo)
+})
