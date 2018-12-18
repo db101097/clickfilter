@@ -122,7 +122,7 @@ def savephoto():
         img = request.form['file']
         title = request.form['title']
         img_up = cloudinary.uploader.upload(img, resource_type="auto", public_id=title)
-        # THIS IS THE URL WE ARE SAVING TO THE USERS DEFAULT "MY PHOTOS" ALBUM
+        # THIS IS THE URL WE ARE SAVING TO THE USERS DEFAULT "MY PHOTOS" ALBUM ==== img_up['url']
         # print(img_up['url'])
         return "success"
 
