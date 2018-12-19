@@ -1,4 +1,4 @@
-# filter-app-v2 <img src="readmelogo.png" width="8%" height="8%" />
+# filter-app-v3 <img src="readmelogo.png" width="8%" height="8%" />
 A web-app for image & video filtering, much like instagram and snapchat.
 
 View our app live on [Heroku!](https://clickfilters.herokuapp.com/ "https://clickfilters.herokuapp.com/")
@@ -7,14 +7,15 @@ View our app live on [Heroku!](https://clickfilters.herokuapp.com/ "https://clic
 ## Tech in use
 ##### Check out our [docs](https://github.com/kre64/filter-app-v1/tree/master/docs) for more details!
 * Frontend
-  * HTML/CSS-Bootstrap
+  * HTML/CSS+Bootstrap
   * JavaScript + jQuery
   * WebGL, THREE.js, Jeeliz API
 * Middleware
-  * Eventually..
+  * Cloudinary (Image hosting service on the cloud)
 * Backend
   * Flask (Python)
   * Pillow, OpenCV, Python libs for image processing
+  * Postgres
 * Hosted on
   * https://clickfilters.herokuapp.com/
   * Locally @ localhost:5000
@@ -29,6 +30,12 @@ View our app live on [Heroku!](https://clickfilters.herokuapp.com/ "https://clic
 * Built a video filtering system using WebGL + THREEjs!
 * Added a facetracking filter in the same vein as Snapchat using Jeeliz-WebGL
 * Rebuilt the frontend UI/UX experience using Bootstrap, and jinga2 templating
+
+## Version 3 Requirements
+* A user should be able to create and name photo albums;
+* A user should be able to select a photo album to add an image to;
+* An image can be added to multiple photo albums;
+* The photo album should persist across sessions (you’ll need to store the album data somewhere).
 
 ## How To Run
 1. Clone or download this repo into a directory of your choosing.
