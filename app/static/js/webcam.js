@@ -25,7 +25,7 @@ if (navigator.getUserMedia) {
 }
 function init() {
   webcam = document.getElementById('webcam');
-  videoImage = document.getElementById('canvas');
+  videoImage = document.getElementById('c');
   
 	videoImageContext = videoImage.getContext( '2d' );
   videoImageContext.fillStyle = 'green';
@@ -61,7 +61,10 @@ function init() {
   renderer.setPixelRatio(2);
   
   container = document.getElementById('webcam-nav');
-  renderer.setSize($(container).width(), $(container).height());
+  var je = document.getElementById('je')
+  je.width=$(container).width()
+  console.log(je.width)
+  renderer.setSize($(container).width(), 500);
   container.appendChild( renderer.domElement );
   
 }
@@ -78,7 +81,8 @@ JEEFACEFILTERAPI.init({
 
   //called when video stream is ready and lib initialized :
   callbackReady: function(errCode, spec) {
-    if (errCode) throw (errCode);
+    if (errCode) console.log(errCode);
+    console.log(errCode,' error')
     CVD = JEEFACEFILTERAPI.Canvas2DDisplay(spec);
     CVD.ctx.strokeStyle = 'yellow';
   }, //end callbackReady()
@@ -305,7 +309,7 @@ $('#camFiltSnap').click(function(){
     // and SWAP IN the FEELIZ facetracking along with the
     // extra face tracking stuff
   // think.src = document.getElementById("thinkfilter").src;
-  $('#canvas').css("visibility","hidden");
+  $('#c').css("visibility","hidden");
   $('#je').css("visibility","visible");
   flag="think";
   // console.log("snapchat")
@@ -316,7 +320,8 @@ $('#camFiltShades').click(function(){
     // this code should SWAP OUT or HIDE the THREE.js webcam
     // and SWAP IN the FEELIZ facetracking along with the
     // extra face tracking stuff
-  $('#canvas').css("visibility","hidden");
+  $('#webcam').css("visibility","hidden");
+  $('#c').css("visibility","hidden");
   $('#je').css("visibility","visible");
   flag="shades";
   // console.log("snapchat")
@@ -328,7 +333,7 @@ $('#camFiltDog').click(function(){
     // this code should SWAP OUT or HIDE the THREE.js webcam
     // and SWAP IN the FEELIZ facetracking along with the
     // extra face tracking stuff
-  $('#canvas').css("visibility","hidden");
+  $('#c').css("visibility","hidden");
   $('#je').css("visibility","visible");
   // console.log("snapchat")
   flag="doggy";
@@ -340,7 +345,7 @@ $('#camFiltCrown').click(function(){
     // this code should SWAP OUT or HIDE the THREE.js webcam
     // and SWAP IN the FEELIZ facetracking along with the
     // extra face tracking stuff
-  $('#canvas').css("visibility","hidden");
+  $('#c').css("visibility","hidden");
   $('#je').css("visibility","visible");
   // console.log("snapchat")
   flag="crown";

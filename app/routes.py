@@ -27,7 +27,7 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 app.secret_key = os.urandom(24)
-app.config['SQLALCHEMY_DATABASE_URI']=os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI']='postgres://jbvppnnx:ZhJfahjms4zUIBAlU1ktr8wAIvnh6Ha5@pellefant.db.elephantsql.com:5432/jbvppnnx'
 app.config['SQLAlCHEMY_TRACK_MODIFICATIONS']=False 
 db = SQLAlchemy(app)
 
