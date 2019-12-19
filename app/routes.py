@@ -363,3 +363,7 @@ def filterimg():
         'image/png'
         )
     return response
+
+@app.route('/dist/<path:path>')
+def send_js(path):
+    return send_from_directory('dist', path)

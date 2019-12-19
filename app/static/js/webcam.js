@@ -77,7 +77,7 @@ var flag;
 
 JEEFACEFILTERAPI.init({
   canvasId: 'je',
-  NNCpath: 'https://appstatic.jeeliz.com/faceFilter/', //root of NNC.json file
+  NNCpath: '../dist/', //root of NNC.json file
 
   //called when video stream is ready and lib initialized :
   callbackReady: function(errCode, spec) {
