@@ -1,7 +1,7 @@
 # filter-app-v3 <img src="readmelogo.png" width="8%" height="8%" />
 A web-app for image & video filtering, much like instagram and snapchat.
 
-View our app live on [Heroku!](https://clickfilters.herokuapp.com/ "https://clickfilters.herokuapp.com/")
+View our app live on [Heroku!](https://clickfilterapp.herokuapp.com/ "https://clickfilterapp.herokuapp.com/")
 
 ##### check out our [wiki](https://github.com/kre64/filter-app-v1/wiki) for more information.
 ## Tech in use
@@ -17,7 +17,7 @@ View our app live on [Heroku!](https://clickfilters.herokuapp.com/ "https://clic
   * Pillow, OpenCV, Python libs for image processing
   * Postgres
 * Hosted on
-  * https://clickfilters.herokuapp.com/
+  * https://clickfilterapp.herokuapp.com/
   * Locally @ localhost:5000
 
 ## Version 1 Requirements
