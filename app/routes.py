@@ -16,6 +16,8 @@ import numpy as np
 import psycopg2
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import send_from_directory
+
 
 # to be used if we need to save files to server.
 UPLOAD_FOLDER = 'app/static/uploads'
